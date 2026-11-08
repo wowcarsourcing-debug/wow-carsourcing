@@ -213,6 +213,42 @@
   }
   .hero-texte h1 { margin: 0 0 18px; font-size: clamp(2.3rem, 5vw, 3.9rem); font-weight: 600; line-height: 1.05; }
   .hero-texte h1 em { display: block; font-style: italic; font-weight: 600; }
+  .vedette-cadre { display: flex; justify-content: center; margin-top: 30px; }
+  a.visuel-mini { display: block; position: relative; }
+  /* Fond or léger derrière les photos */
+  .visuel-mini, .galerie-principale { background: linear-gradient(135deg, #fbf3dc 0%, #EBCD8B 45%, #C9974A 100%); padding: 10px; }
+  .visuel-mini img { inset: 10px; width: calc(100% - 20px); height: calc(100% - 20px); border-radius: 14px; }
+  .galerie-principale img { border-radius: 14px; }
+  .miniature { background: linear-gradient(135deg, #fbf3dc, #EBCD8B); }
+  /* Fiche véhicule : affichée uniquement quand on clique sur la voiture */
+  .fiche-718 { display: none; max-width: 1200px; margin: 50px auto 0; padding-top: 10px; }
+  .fiche-718:target { display: block; }
+  .fiche-retour { display: inline-block; color: var(--or-clair); text-decoration: none; letter-spacing: .08em; font-size: .9rem; margin-bottom: 18px; }
+  .fiche-marque { font-size: .72rem; letter-spacing: .22em; text-transform: uppercase; color: var(--or-clair); }
+  .fiche-titre { font-size: clamp(2rem, 4vw, 3rem); font-weight: 600; margin: 8px 0 24px; color: var(--champagne); }
+  .fiche-grille { display: grid; grid-template-columns: 1.6fr 1fr; gap: 28px; align-items: start; }
+  .galerie-principale { border: 1px solid var(--or); border-radius: 22px; overflow: hidden; background: #050505; aspect-ratio: 4 / 3; }
+  .galerie-principale img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .galerie-miniatures { display: grid; grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); gap: 10px; margin-top: 12px; }
+  .miniature { padding: 0; border: 1px solid rgba(184,134,47,.4); border-radius: 14px; overflow: hidden; background: #050505; cursor: pointer; aspect-ratio: 4 / 3; }
+  .miniature img { width: 100%; height: 100%; object-fit: cover; display: block; opacity: .7; }
+  .miniature.actif { border-color: var(--or-clair); box-shadow: 0 0 0 2px var(--or-clair); }
+  .miniature.actif img, .miniature:hover img { opacity: 1; }
+  .fiche-718 .prix-panneau { position: static; }
+  .fiche-718 .actions { display: flex; flex-direction: column; gap: 12px; }
+  .fiche-blocs { display: grid; grid-template-columns: 1fr 1.2fr; gap: 28px; margin-top: 36px; }
+  .fiche-blocs dl { margin: 12px 0 0; }
+  .fiche-blocs dl > div { display: flex; justify-content: space-between; border-bottom: 1px solid rgba(184,134,47,.25); padding: 10px 0; }
+  .fiche-blocs dt { color: #a79f8a; }
+  .fiche-blocs dd { margin: 0; color: var(--champagne); font-weight: 600; }
+  .fiche-description p { color: #c9bfa8; line-height: 1.7; }
+  @media (max-width: 800px) {
+    .fiche-grille, .fiche-blocs { grid-template-columns: 1fr; }
+  }
+  .annonce.vedette { width: 100%; max-width: 520px; border-color: var(--or); box-shadow: 0 10px 30px rgba(0,0,0,.6); }
+  .annonce.vedette .visuel-mini { aspect-ratio: 4 / 3; }
+  .annonce.vedette .titre { font-size: 1.7rem; }
+  .annonce.vedette .prix { font-size: 1.1rem; font-style: italic; }
   .rond-flottant { position: fixed; right: 20px; bottom: 20px; width: 60px; height: 60px; z-index: 60; box-shadow: 0 6px 18px rgba(0,0,0,.6); }
   .rond-flottant svg { width: 28px; height: 28px; }
   .hero-texte p { font-size: 1.15rem; line-height: 1.7; color: var(--champagne); margin: 0 0 28px; max-width: 520px; }
@@ -553,17 +589,83 @@
 
 <section class="section-accueil">
   <div class="entete-section">
-    <div class="eyebrow trait">Derniers arrivages</div>
-    <h2 class="titre-liste">Nos <span class="or-texte"><em>Sélections</em></span></h2>
-    <p class="sous-liste">Véhicules vérifiés auprès des concessions.</p>
+    <h2 class="titre-liste">Ma sélection <span class="or-texte"><em>coup de cœur</em></span></h2>
+    <p class="sous-liste">Sélection exclusive du véhicule disponible immédiatement.</p>
+  </div>
+  <div class="vedette-cadre">
+    <article class="annonce vedette">
+      <a class="visuel-mini" href="#fiche-718" aria-label="Voir la fiche de la Porsche 718 Cayman GTS">
+        <img src="porsche-718-1.jpg" alt="Porsche 718 Cayman GTS noire">
+        <span class="coin">Coup de cœur</span>
+      </a>
+      <div class="corps">
+        <div class="marque-petit">Porsche</div>
+        <div class="titre">718 Cayman GTS</div>
+        <div class="puces"><span>Essence</span><span>Automatique</span></div>
+        <div class="pied">
+          <div class="prix">Prix sur demande</div>
+          <a class="bouton-or" href="#fiche-718">Voir la fiche</a>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <div class="fiche-718" id="fiche-718">
+    <a class="fiche-retour" href="#arrivages-liste">← Retour à la sélection</a>
+    <div class="fiche-marque">Porsche · Occasion · Disponible</div>
+    <h3 class="fiche-titre">718 Cayman <span class="or-texte"><em>GTS</em></span></h3>
+    <div class="fiche-grille">
+      <div class="galerie">
+        <div class="galerie-principale"><img id="photo-principale" src="porsche-718-1.jpg" alt="Porsche 718 Cayman GTS noire"></div>
+        <div class="galerie-miniatures">
+          <button type="button" class="miniature actif" data-photo="porsche-718-1.jpg"><img src="porsche-718-1.jpg" alt=""></button>
+          <button type="button" class="miniature" data-photo="porsche-718-2.jpg"><img src="porsche-718-2.jpg" alt=""></button>
+          <button type="button" class="miniature" data-photo="porsche-718-3.jpg"><img src="porsche-718-3.jpg" alt=""></button>
+          <button type="button" class="miniature" data-photo="porsche-718-4.jpg"><img src="porsche-718-4.jpg" alt=""></button>
+          <button type="button" class="miniature" data-photo="porsche-718-5.jpg"><img src="porsche-718-5.jpg" alt=""></button>
+          <button type="button" class="miniature" data-photo="porsche-718-6.jpg"><img src="porsche-718-6.jpg" alt=""></button>
+          <button type="button" class="miniature" data-photo="porsche-718-7.jpg"><img src="porsche-718-7.jpg" alt=""></button>
+          <button type="button" class="miniature" data-photo="porsche-718-8.jpg"><img src="porsche-718-8.jpg" alt=""></button>
+          <button type="button" class="miniature" data-photo="porsche-718-9.jpg"><img src="porsche-718-9.jpg" alt=""></button>
+        </div>
+      </div>
+      <aside class="prix-panneau">
+        <div class="eyebrow">Prix</div>
+        <div class="prix-grand">Prix sur demande</div>
+        <p class="petit">Je vous communique le prix et les conditions de livraison sur simple demande.</p>
+        <div class="actions">
+          <a class="bouton-or" href="https://wa.me/33769276261?text=Bonjour%20Christelle%2C%20je%20souhaite%20r%C3%A9server%20la%20Porsche%20718%20Cayman%20GTS." target="_blank" rel="noopener">Réserver ce véhicule</a>
+          <a class="bouton-whatsapp-vert" href="https://wa.me/33769276261?text=Bonjour%20Christelle%2C%20je%20souhaite%20des%20informations%20sur%20la%20Porsche%20718%20Cayman%20GTS." target="_blank" rel="noopener">Discuter sur WhatsApp</a>
+          <a class="bouton-contour" href="tel:+33769276261">Appeler Christelle</a>
+        </div>
+      </aside>
+    </div>
+    <div class="fiche-blocs">
+      <div class="fiche-carac">
+        <div class="eyebrow">Caractéristiques</div>
+        <dl>
+          <div><dt>Marque</dt><dd>Porsche</dd></div>
+          <div><dt>Modèle</dt><dd>718 Cayman GTS</dd></div>
+          <div><dt>Carrosserie</dt><dd>Coupé</dd></div>
+          <div><dt>Carburant</dt><dd>Essence</dd></div>
+          <div><dt>Boîte</dt><dd>Automatique (PDK)</dd></div>
+          <div><dt>Couleur</dt><dd>Noir</dd></div>
+        </dl>
+      </div>
+      <div class="fiche-description">
+        <div class="eyebrow">Description</div>
+        <p>Une Porsche 718 Cayman GTS noire, coupé sportif à boîte automatique PDK. Véhicule vendu par une concession et sélectionné par WoW Car Sourcing selon votre profil.</p>
+        <p>Je vous accompagne de la réservation à la remise des clés : démarches, carte grise et livraison selon votre choix.</p>
+      </div>
+    </div>
   </div>
   <div id="arrivages-liste"></div>
 </section>
 
 <section class="section-accueil">
   <div class="entete-section">
-    <div class="eyebrow trait">Recherche par marque</div>
-    <h2 class="titre-liste">Marques <span class="or-texte"><em>recherchées</em></span></h2>
+    <div class="eyebrow trait">Votre recherche par marque</div>
+    <h2 class="titre-liste">Votre <span class="or-texte"><em>marque</em></span></h2>
     <p class="sous-liste">Cliquez sur une marque pour voir sa page dédiée.</p>
   </div>
   <div id="marques-grille"></div>
@@ -996,7 +1098,7 @@ function renderAccueilHaut() {
   const arrivages = ANNONCES.slice(0, 3);
   document.getElementById("arrivages-liste").innerHTML = arrivages.length
     ? `<div class="cartes">${arrivages.map(carte).join("")}</div>`
-    : `<div class="vide">Les premières annonces vérifiées seront publiées ici.</div>`;
+    : ``;
   document.getElementById("marques-grille").innerHTML = `<div class="grille-marques">` + MARQUES.map(m => {
     const n = ANNONCES.filter(a => a.marque === m).length;
     return `<button class="marque-tuile" data-marque="${echapper(m)}"><span class="nom">${echapper(m)}</span><span class="etat">${n ? n + " annonce(s)" : "Sur demande"}</span></button>`;
@@ -1025,5 +1127,13 @@ accueil("");
   <a class="rond-mini rond-flottant" href="https://wa.me/33769276261" target="_blank" rel="noopener" aria-label="Discuter sur WhatsApp">
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.5 7.5L3 21l2-5.4A8.5 8.5 0 1 1 21 11.5z"/></svg>
   </a>
+<script>
+  document.querySelectorAll('.miniature').forEach(function (b) {
+    b.addEventListener('click', function () {
+      document.getElementById('photo-principale').src = b.dataset.photo;
+      document.querySelectorAll('.miniature').forEach(function (x) { x.classList.toggle('actif', x === b); });
+    });
+  });
+</script>
 </body>
 </html>
