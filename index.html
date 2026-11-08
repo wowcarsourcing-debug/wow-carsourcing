@@ -213,6 +213,8 @@
   }
   .hero-texte h1 { margin: 0 0 18px; font-size: clamp(2.3rem, 5vw, 3.9rem); font-weight: 600; line-height: 1.05; }
   .hero-texte h1 em { display: block; font-style: italic; font-weight: 600; }
+  .rond-flottant { position: fixed; right: 20px; bottom: 20px; width: 60px; height: 60px; z-index: 60; box-shadow: 0 6px 18px rgba(0,0,0,.6); }
+  .rond-flottant svg { width: 28px; height: 28px; }
   .hero-texte p { font-size: 1.15rem; line-height: 1.7; color: var(--champagne); margin: 0 0 28px; max-width: 520px; }
   .hero-boutons { display: flex; flex-wrap: wrap; gap: 12px; }
   .hero-boutons .bouton-or, .hero-boutons .bouton-contour { padding: 15px 26px; }
@@ -267,6 +269,19 @@
   .grille-services p, .grille-etapes p { color: #c9bfa8; line-height: 1.6; margin: 0; font-size: 1rem; }
   .grille-etapes { display: grid; grid-template-columns: repeat(4, 1fr); gap: 26px; margin-top: 30px; }
   .grille-etapes > div { border-top: 2px solid var(--or); padding-top: 20px; }
+  /* Section « En 4 étapes » : bande sombre, filet doré en haut, chiffres en serif */
+  .section-etapes {
+    background: linear-gradient(180deg, #0c0a06 0%, #050505 60%, #0c0a06 100%);
+    border-top: 6px solid var(--or-clair);
+    margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw);
+    padding-left: calc(50vw - 50%); padding-right: calc(50vw - 50%);
+    padding-top: 64px; padding-bottom: 64px;
+  }
+  .section-etapes .num-or { font-family: inherit; font-size: 3.4rem; font-weight: 400; line-height: 1; color: var(--or-clair); opacity: .7; }
+  .section-etapes .grille-etapes { gap: 34px; }
+  .section-etapes .grille-etapes > div { border-top: 1px solid rgba(235,205,139,.55); }
+  .section-etapes .grille-etapes h3 { font-size: 1.55rem; color: #ffffff; }
+  .section-etapes .grille-etapes p { font-size: 1.02rem; }
   .vide-avis { border: 1px dashed rgba(184,134,47,.5); border-radius: 22px; padding: 30px; text-align: center; color: #a79f8a; font-style: italic; margin-top: 30px; }
   .grille-partenaires { margin-top: 26px; }
   .carte-partenaire { border: 1px solid rgba(184,134,47,.5); border-radius: 22px; padding: 28px; max-width: 420px; background: #0c0b08; }
@@ -277,6 +292,8 @@
   .titre-cta { font-size: clamp(2rem, 4vw, 3rem); font-weight: 600; margin: 0 0 10px; line-height: 1.1; }
   .titre-cta em { font-style: italic; font-weight: 500; }
   .bande-cta p { margin: 0; font-size: 1.05rem; }
+  .bouton-whatsapp-vert { display: inline-block; background: #25D366; color: #ffffff; border-radius: 999px; padding: 14px 26px; text-decoration: none; font-weight: 600; letter-spacing: .06em; }
+  .pied-sous-marque { color: var(--or-clair); font-size: .72rem; letter-spacing: .22em; text-transform: uppercase; margin: 6px 0 14px; }
   .cta-boutons { display: flex; gap: 12px; flex-wrap: wrap; }
   .bouton-sombre, .bouton-transparent {
     border-radius: 999px; padding: 14px 26px; text-decoration: none; letter-spacing: .1em; text-transform: uppercase; font-weight: 700; font-size: .9rem;
@@ -514,7 +531,8 @@
 
 <section class="hero">
   <div class="hero-texte">
-    <h1>Je chasse l'exceptionnel,<br><span class="or-texte">vous prenez le volant</span></h1>
+    <div class="eyebrow trait">Sourcing automobile · Auprès des concessions</div>
+    <h1>Chaque voiture a son histoire.<em class="or-texte">Trouvons la vôtre.</em></h1>
     <p>WoW Car Sourcing vous accompagne dans la recherche de votre véhicule, auprès des Concessions. Sélection, conseil d'achat, démarches et livraison : je m'occupe de tout.</p>
     <div class="hero-boutons">
       <a class="bouton-or" href="#contenu">Voir les véhicules</a>
@@ -556,22 +574,6 @@
   <div class="filet"><span>◆</span></div>
   <h2><span class="or-texte">Pourquoi WoW Car Sourcing ?</span></h2>
   <p class="intro">J'ai créé WoW Car Sourcing pour proposer un service clé en main et des conseils d'achat à ceux qui n'y connaissent rien. Selon vos attentes, je vous trouve le véhicule le plus adapté.</p>
-  <div class="promesses">
-    <div><strong>Discrétion</strong>Une recherche menée avec soin, dans le respect de vos attentes.</div>
-    <div><strong>Concession</strong>Uniquement des véhicules vendus par des concessions, jamais par des mandataires.</div>
-    <div><strong>Accompagnement</strong>De la recherche jusqu'à la remise des clés.</div>
-  </div>
-  <p class="services-sous-titre" id="prestations">Mes prestations</p>
-  <div class="services">
-    <div class="service"><h3>Clé en main</h3><p>Je m'occupe de tout, de la recherche jusqu'à la remise des clés.</p></div>
-    <div class="service"><h3>Conseil d'achat</h3><p>Pour ceux qui n'y connaissent rien, je vous guide et je vous trouve le véhicule le plus adapté à vos attentes.</p></div>
-    <div class="service"><h3>Estimation et reprise</h3><p>Estimation et reprise de votre ancien véhicule si vous en achetez un nouveau.</p></div>
-    <div class="service"><h3>Financement</h3><p>Je vous propose un partenariat avec une banque professionnelle du Crédit Agricole.</p></div>
-    <div class="service"><h3>Démarches administratives</h3><p>Je m'occupe de vos démarches administratives, notamment la carte grise.</p></div>
-    <div class="service"><h3>Livraison</h3><p>Un coût supplémentaire selon la distance, y compris dans l'Union européenne.</p></div>
-    <div class="service"><h3>Gravage</h3><p>Peut être effectué par la concession. Chaque concession a son propre tarif.</p></div>
-    <div class="service"><h3>Déplacements</h3><p>Je me déplace partout dans l'Union européenne dès que le mandat est signé.</p></div>
-  </div>
 </section>
 
 <div class="recherche-zone" id="recherche">
@@ -605,7 +607,7 @@
   </div>
 </section>
 
-<section class="section-accueil">
+<section class="section-accueil section-etapes">
   <div class="entete-section">
     <div class="eyebrow trait">Comment ça marche</div>
     <h2 class="titre-liste">En 4 étapes <span class="or-texte"><em>simples</em></span></h2>
@@ -625,7 +627,10 @@
     <h2 class="titre-liste">Ce que disent <span class="or-texte"><em>mes clients</em></span></h2>
     <p class="sous-liste">Je ne publie que des avis réels, avec l'accord de leurs auteurs.</p>
   </div>
-  <div class="vide-avis">Aucun avis publié pour le moment.</div>
+  <div class="vide-avis">
+    <p style="margin:0 0 18px;">Aucun avis publié pour le moment. Vous avez travaillé avec moi ? Votre témoignage m'aide beaucoup.</p>
+    <a class="bouton-contour" href="https://wa.me/33769276261?text=Bonjour%20Christelle%2C%20je%20souhaite%20laisser%20un%20avis%20sur%20WoW%20Car%20Sourcing." target="_blank" rel="noopener">Laisser un avis</a>
+  </div>
 </section>
 
 <section class="section-accueil">
@@ -641,12 +646,12 @@
 <section class="bande-cta">
   <div class="bande-cta-inner">
     <div>
-      <h2 class="titre-cta">Trouvons votre prochain <em>véhicule</em> ensemble</h2>
+      <h2 class="titre-cta">Trouvons votre prochain<br><em>véhicule ensemble</em></h2>
       <p>Contactez-moi dès aujourd'hui pour échanger sur votre recherche.</p>
     </div>
     <div class="cta-boutons">
       <a class="bouton-sombre" href="tel:+33769276261">Nous appeler</a>
-      <a class="bouton-transparent" href="https://wa.me/33769276261" target="_blank" rel="noopener">WhatsApp direct</a>
+      <a class="bouton-whatsapp-vert" href="https://wa.me/33769276261" target="_blank" rel="noopener">WhatsApp direct</a>
     </div>
   </div>
 </section>
@@ -655,6 +660,7 @@
   <div class="pied-grille">
     <div>
       <div class="pied-marque or-texte">WoW Car Sourcing</div>
+      <div class="pied-sous-marque">Sourcing automobile · Auprès des concessions</div>
       <p>Sourcing de véhicules auprès des concessions. Accompagnement de la recherche à la remise des clés.</p>
     </div>
     <div>
@@ -1016,5 +1022,8 @@ document.getElementById("marques-grille").addEventListener("click", e => {
 
 accueil("");
 </script>
+  <a class="rond-mini rond-flottant" href="https://wa.me/33769276261" target="_blank" rel="noopener" aria-label="Discuter sur WhatsApp">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.5 7.5L3 21l2-5.4A8.5 8.5 0 1 1 21 11.5z"/></svg>
+  </a>
 </body>
 </html>
