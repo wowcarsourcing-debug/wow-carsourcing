@@ -230,6 +230,100 @@
     .hero-photo::after { background: linear-gradient(180deg, rgba(6,6,6,0) 40%, #060606 100%); }
   }
 
+  /* Accueil : bande dorée, défilé des marques, arrivages, marques */
+  .bande-or { display: grid; grid-template-columns: repeat(4, 1fr); background: var(--or-metal); color: #120d04; text-align: center; }
+  .bande-or > div { padding: 26px 14px; border-right: 1px solid rgba(18,13,4,.25); }
+  .bande-or > div:last-child { border-right: none; }
+  .bande-or strong { display: block; font-size: 1.35rem; font-weight: 700; }
+  .bande-or span { font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; }
+  .ticker { overflow: hidden; white-space: nowrap; padding: 16px 0; background: #0a0a0a; border-bottom: 1px solid rgba(184,134,47,.3); }
+  .ticker-piste { display: inline-block; animation: defile 45s linear infinite; }
+  .ticker span { margin: 0 18px; color: var(--or-clair); letter-spacing: .2em; text-transform: uppercase; font-size: .9rem; }
+  .ticker .pt { color: var(--or); letter-spacing: 0; }
+  @keyframes defile { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .section-accueil { max-width: 1200px; margin: 60px auto 0; padding: 0 20px; }
+  .entete-section { text-align: left; }
+  .grille-marques { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px; margin-top: 20px; }
+  .marque-tuile {
+    border: 1px solid rgba(184,134,47,.5); border-radius: 22px; padding: 26px 18px; background: #0c0b08;
+    color: var(--champagne); cursor: pointer; text-align: center; font-family: inherit; transition: background .3s, color .3s, border-color .3s;
+  }
+  .marque-tuile:hover { background: var(--or-metal); color: #120d04; border-color: transparent; }
+  .marque-tuile .nom { display: block; font-size: 1.3rem; font-weight: 600; }
+  .marque-tuile .etat { display: block; margin-top: 4px; font-size: .85rem; font-style: italic; opacity: .8; }
+  .centre { text-align: center; margin-top: 36px; }
+  @media (max-width: 700px) {
+    .bande-or { grid-template-columns: repeat(2, 1fr); }
+    .bande-or > div:nth-child(2) { border-right: none; }
+    .bande-or > div:nth-child(-n+2) { border-bottom: 1px solid rgba(18,13,4,.25); }
+  }
+
+  /* Bas de l'accueil : services, étapes, avis, partenaires, appel à l'action, pied de page */
+  .grille-services { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid rgba(184,134,47,.4); margin-top: 30px; }
+  .grille-services > div { padding: 30px 26px 34px; border-bottom: 1px solid rgba(184,134,47,.3); border-right: 1px solid rgba(184,134,47,.3); }
+  .grille-services > div:nth-child(3n) { border-right: none; }
+  .num-or { font-size: 2.2rem; color: var(--or); font-weight: 500; opacity: .75; }
+  .grille-services h3, .grille-etapes h3 { font-size: 1.4rem; font-weight: 600; color: var(--champagne); margin: 14px 0 8px; }
+  .grille-services p, .grille-etapes p { color: #c9bfa8; line-height: 1.6; margin: 0; font-size: 1rem; }
+  .grille-etapes { display: grid; grid-template-columns: repeat(4, 1fr); gap: 26px; margin-top: 30px; }
+  .grille-etapes > div { border-top: 2px solid var(--or); padding-top: 20px; }
+  .vide-avis { border: 1px dashed rgba(184,134,47,.5); border-radius: 22px; padding: 30px; text-align: center; color: #a79f8a; font-style: italic; margin-top: 30px; }
+  .grille-partenaires { margin-top: 26px; }
+  .carte-partenaire { border: 1px solid rgba(184,134,47,.5); border-radius: 22px; padding: 28px; max-width: 420px; background: #0c0b08; }
+  .carte-partenaire strong { display: block; color: var(--or-clair); font-size: 1.4rem; margin-bottom: 8px; }
+  .carte-partenaire span { color: #c9bfa8; line-height: 1.6; }
+  .bande-cta { margin-top: 70px; background: var(--or-metal); color: #120d04; padding: 50px 24px; }
+  .bande-cta-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 30px; flex-wrap: wrap; }
+  .titre-cta { font-size: clamp(2rem, 4vw, 3rem); font-weight: 600; margin: 0 0 10px; line-height: 1.1; }
+  .titre-cta em { font-style: italic; font-weight: 500; }
+  .bande-cta p { margin: 0; font-size: 1.05rem; }
+  .cta-boutons { display: flex; gap: 12px; flex-wrap: wrap; }
+  .bouton-sombre, .bouton-transparent {
+    border-radius: 999px; padding: 14px 26px; text-decoration: none; letter-spacing: .1em; text-transform: uppercase; font-weight: 700; font-size: .9rem;
+  }
+  .bouton-sombre { background: #070707; color: var(--or-clair); border: 1.5px solid #070707; }
+  .bouton-transparent { background: transparent; color: #120d04; border: 1.5px solid #120d04; }
+  .pied-site { background: #050505; border-top: 1px solid rgba(184,134,47,.35); padding: 50px 20px 20px; text-align: left; letter-spacing: 0; }
+  .pied-grille { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 30px; }
+  .pied-marque { font-size: 1.5rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 12px; }
+  .pied-grille p { color: #c9bfa8; line-height: 1.6; margin: 0; }
+  .pied-grille h4 { color: var(--or-clair); font-size: .8rem; letter-spacing: .22em; text-transform: uppercase; margin: 0 0 14px; font-weight: 600; }
+  .pied-grille a, .pied-grille span.ligne { display: block; color: var(--champagne); text-decoration: none; margin-bottom: 9px; font-size: 1rem; }
+  .pied-grille a:hover { color: var(--or-clair); }
+  .pied-bas { max-width: 1200px; margin: 34px auto 0; padding-top: 18px; border-top: 1px solid rgba(184,134,47,.3); color: #a79f8a; font-size: .9rem; }
+  @media (max-width: 900px) {
+    .grille-services { grid-template-columns: 1fr 1fr; }
+    .grille-services > div:nth-child(3n) { border-right: 1px solid rgba(184,134,47,.3); }
+    .grille-services > div:nth-child(2n) { border-right: none; }
+    .grille-etapes { grid-template-columns: 1fr 1fr; }
+    .pied-grille { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 600px) {
+    .grille-services, .grille-etapes, .pied-grille { grid-template-columns: 1fr; }
+    .grille-services > div { border-right: none; }
+  }
+
+  /* Page liste des véhicules, comme Krone */
+  .entete-liste { text-align: left; padding: 36px 0 6px; }
+  .eyebrow.trait::before { content: ""; display: inline-block; width: 28px; height: 1px; background: var(--or); vertical-align: middle; margin-right: 12px; }
+  .titre-liste { font-size: clamp(2.6rem, 6vw, 4.2rem); font-weight: 600; line-height: 1; margin: 12px 0 14px; text-align: left; }
+  .titre-liste em { font-style: italic; font-weight: 500; }
+  .sous-liste { color: #c9bfa8; font-size: 1.05rem; margin: 0; }
+  .barre-filtres {
+    display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 26px 0 8px;
+    padding: 14px; border: 1px solid rgba(184,134,47,.45); border-radius: 22px; background: rgba(12,11,8,.9);
+  }
+  .barre-filtres select, .barre-filtres input {
+    border: 1px solid rgba(184,134,47,.6); background: #070707; color: var(--champagne);
+    border-radius: 999px; padding: 10px 16px; font-family: inherit; font-size: .95rem; min-width: 150px;
+  }
+  .barre-filtres input { flex: 1; min-width: 200px; }
+  .barre-filtres .compte { margin-left: auto; color: #a79f8a; font-size: .92rem; text-align: right; }
+  @media (max-width: 700px) {
+    .barre-filtres select, .barre-filtres input { width: 100%; flex: none; }
+    .barre-filtres .compte { margin-left: 0; width: 100%; text-align: center; }
+  }
+
   /* Catalogue : bandeau, filtres, cartes annonces, pagination */
   .hero-liste { text-align: center; padding: 30px 0 6px; }
   .eyebrow { letter-spacing: .3em; text-transform: uppercase; font-size: .8rem; color: var(--or-clair); }
@@ -430,6 +524,34 @@
   <div class="hero-photo" role="img" aria-label="Voiture de sport"></div>
 </section>
 
+<div class="bande-or">
+  <div><strong>Concession</strong><span>Véhicules vendus par des concessions</span></div>
+  <div><strong>Clé en main</strong><span>De la recherche à la remise des clés</span></div>
+  <div><strong>Conseil d'achat</strong><span>Je vous guide selon vos attentes</span></div>
+  <div><strong>Livraison UE</strong><span>Selon la distance, sur devis</span></div>
+</div>
+
+<div class="ticker"><div class="ticker-piste" id="ticker-piste"></div></div>
+
+<section class="section-accueil">
+  <div class="entete-section">
+    <div class="eyebrow trait">Derniers arrivages</div>
+    <h2 class="titre-liste">Nos <span class="or-texte"><em>Sélections</em></span></h2>
+    <p class="sous-liste">Véhicules vérifiés auprès des concessions.</p>
+  </div>
+  <div id="arrivages-liste"></div>
+</section>
+
+<section class="section-accueil">
+  <div class="entete-section">
+    <div class="eyebrow trait">Recherche par marque</div>
+    <h2 class="titre-liste">Marques <span class="or-texte"><em>recherchées</em></span></h2>
+    <p class="sous-liste">Cliquez sur une marque pour voir sa page dédiée.</p>
+  </div>
+  <div id="marques-grille"></div>
+  <div class="centre"><a class="bouton-or" href="#contenu">Voir tous les véhicules</a></div>
+</section>
+
 <section class="presentation" id="pourquoi">
   <div class="filet"><span>◆</span></div>
   <h2><span class="or-texte">Pourquoi WoW Car Sourcing ?</span></h2>
@@ -467,8 +589,98 @@
   <div id="contenu"></div>
 </main>
 
-<footer>
-  WoW Car Sourcing · [Raison sociale, SIREN et adresse à compléter]
+<section class="section-accueil">
+  <div class="entete-section">
+    <div class="eyebrow trait">Nos services</div>
+    <h2 class="titre-liste">Une solution <span class="or-texte"><em>clé en main</em></span></h2>
+    <p class="sous-liste">De la recherche à la remise des clés, je gère chaque étape avec rigueur et transparence.</p>
+  </div>
+  <div class="grille-services">
+    <div><div class="num-or">01</div><h3>Clé en main</h3><p>Je m'occupe de tout, de la recherche jusqu'à la remise des clés.</p></div>
+    <div><div class="num-or">02</div><h3>Conseil d'achat</h3><p>Pour ceux qui n'y connaissent rien, je vous guide vers le véhicule le plus adapté à vos attentes.</p></div>
+    <div><div class="num-or">03</div><h3>Estimation et reprise</h3><p>Estimation et reprise de votre ancien véhicule si vous en achetez un nouveau.</p></div>
+    <div><div class="num-or">04</div><h3>Financement</h3><p>Un partenariat avec une banque professionnelle du Crédit Agricole.</p></div>
+    <div><div class="num-or">05</div><h3>Démarches administratives</h3><p>Je m'occupe de vos démarches, notamment la carte grise.</p></div>
+    <div><div class="num-or">06</div><h3>Livraison</h3><p>Un coût selon la distance, y compris dans l'Union européenne.</p></div>
+  </div>
+</section>
+
+<section class="section-accueil">
+  <div class="entete-section">
+    <div class="eyebrow trait">Comment ça marche</div>
+    <h2 class="titre-liste">En 4 étapes <span class="or-texte"><em>simples</em></span></h2>
+    <p class="sous-liste">Un processus clair, de votre demande jusqu'à la remise des clés.</p>
+  </div>
+  <div class="grille-etapes">
+    <div><div class="num-or">01</div><h3>Vous décrivez votre recherche</h3><p>Marque, modèle, budget et attentes.</p></div>
+    <div><div class="num-or">02</div><h3>Je cherche auprès des concessions</h3><p>Seules les annonces vendues par des concessions sont retenues.</p></div>
+    <div><div class="num-or">03</div><h3>Vous validez</h3><p>Nous convenons du véhicule et du prix, puis nous signons le mandat.</p></div>
+    <div><div class="num-or">04</div><h3>Démarches et livraison</h3><p>Carte grise, livraison ou remise des clés selon votre choix.</p></div>
+  </div>
+</section>
+
+<section class="section-accueil">
+  <div class="entete-section">
+    <div class="eyebrow trait">Avis clients</div>
+    <h2 class="titre-liste">Ce que disent <span class="or-texte"><em>mes clients</em></span></h2>
+    <p class="sous-liste">Je ne publie que des avis réels, avec l'accord de leurs auteurs.</p>
+  </div>
+  <div class="vide-avis">Aucun avis publié pour le moment.</div>
+</section>
+
+<section class="section-accueil">
+  <div class="entete-section">
+    <div class="eyebrow trait">Nos partenaires</div>
+    <h2 class="titre-liste">Un financement de <span class="or-texte"><em>confiance</em></span></h2>
+  </div>
+  <div class="grille-partenaires">
+    <div class="carte-partenaire"><strong>Crédit Agricole</strong><span>Un partenariat avec une banque professionnelle pour le financement de votre véhicule.</span></div>
+  </div>
+</section>
+
+<section class="bande-cta">
+  <div class="bande-cta-inner">
+    <div>
+      <h2 class="titre-cta">Trouvons votre prochain <em>véhicule</em> ensemble</h2>
+      <p>Contactez-moi dès aujourd'hui pour échanger sur votre recherche.</p>
+    </div>
+    <div class="cta-boutons">
+      <a class="bouton-sombre" href="tel:+33769276261">Nous appeler</a>
+      <a class="bouton-transparent" href="https://wa.me/33769276261" target="_blank" rel="noopener">WhatsApp direct</a>
+    </div>
+  </div>
+</section>
+
+<footer class="pied-site">
+  <div class="pied-grille">
+    <div>
+      <div class="pied-marque or-texte">WoW Car Sourcing</div>
+      <p>Sourcing de véhicules auprès des concessions. Accompagnement de la recherche à la remise des clés.</p>
+    </div>
+    <div>
+      <h4>Navigation</h4>
+      <a href="#top">Accueil</a>
+      <a href="#contenu">Véhicules</a>
+      <a href="#pourquoi">Pourquoi nous</a>
+      <a href="#prestations">Prestations</a>
+      <a href="#recherche">Recherche</a>
+    </div>
+    <div>
+      <h4>Services</h4>
+      <span class="ligne">Clé en main</span>
+      <span class="ligne">Conseil d'achat</span>
+      <span class="ligne">Financement</span>
+      <span class="ligne">Démarches</span>
+      <span class="ligne">Livraison</span>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <a href="tel:+33769276261">+33 7 69 27 62 61</a>
+      <a href="https://wa.me/33769276261" target="_blank" rel="noopener">WhatsApp</a>
+      <span class="ligne">Disponible à tout moment sur rendez-vous</span>
+    </div>
+  </div>
+  <div class="pied-bas">© 2026 WoW Car Sourcing · [Raison sociale, SIREN et adresse à compléter]</div>
 </footer>
 
 <script>
@@ -648,7 +860,7 @@ function annoncesPour(marque, energie, charge) {
   return ANNONCES.filter(a => a.marque === marque && a.energie === energie && (!avecCharge || a.charge === charge));
 }
 // Filtres et pagination du catalogue
-const etatCatalogue = { marque:"", energie:"", page:1 };
+const etatCatalogue = { marque:"", energie:"", texte:"", page:1 };
 const PAR_PAGE = 9;
 
 function accueil(filtre) {
@@ -657,7 +869,8 @@ function accueil(filtre) {
   const marques = MARQUES.filter(m => !f || m.toLowerCase().includes(f));
   const liste = ANNONCES.filter(a =>
     (!etatCatalogue.marque || a.marque === etatCatalogue.marque) &&
-    (!etatCatalogue.energie || a.energie === etatCatalogue.energie));
+    (!etatCatalogue.energie || a.energie === etatCatalogue.energie) &&
+    (!etatCatalogue.texte || (a.marque + " " + a.modele).toLowerCase().includes(etatCatalogue.texte.toLowerCase())));
   const pages = Math.max(1, Math.ceil(liste.length / PAR_PAGE));
   if (etatCatalogue.page > pages) etatCatalogue.page = 1;
   const debut = (etatCatalogue.page - 1) * PAR_PAGE;
@@ -669,17 +882,20 @@ function accueil(filtre) {
       return `<option value="${echapper(val)}" ${val === actuel ? "selected" : ""}>${echapper(lib)}</option>`;
     }).join("");
 
-  let html = `<div class="hero-liste">
-      <div class="eyebrow">Sélection</div>
-      <h2><span class="or-texte">Véhicules sélectionnés</span></h2>
-      <p class="sous">Vendus par des concessions · Accompagnement WoW Car Sourcing</p>
+  const nb = liste.length;
+  let html = `<div class="entete-liste">
+      <div class="eyebrow trait">Stock de sélection</div>
+      <h2 class="titre-liste">Tous les <span class="or-texte"><em>Véhicules</em></span></h2>
+      <p class="sous-liste">${nb} véhicule(s) · Vendus par des concessions · Accompagnement WoW Car Sourcing</p>
     </div>
-    <div class="filtres">
+    <div class="barre-filtres">
       <select id="filtre-marque" aria-label="Marque">${options(MARQUES, etatCatalogue.marque, "Toutes marques")}</select>
-      <select id="filtre-energie" aria-label="Énergie">${options(ENERGIES, etatCatalogue.energie, "Toutes énergies")}</select>
+      <select id="filtre-energie" aria-label="Énergie">${options(ENERGIES, etatCatalogue.energie, "Tous carburants")}</select>
+      <input id="filtre-texte" type="search" placeholder="Rechercher marque, modèle" value="${echapper(etatCatalogue.texte)}" aria-label="Rechercher">
+      <button class="bouton-or" id="lancer-recherche">Rechercher</button>
       <button class="bouton-contour" id="reset-filtres">Réinitialiser</button>
+      <span class="compte">${nb} résultat(s)</span>
     </div>
-    <p class="compte">${liste.length} véhicule(s)</p>
     <div class="cartes">${visibles.length
       ? visibles.map(carte).join("")
       : `<div class="vide">Bientôt disponible : aucune annonce vérifiée pour ces critères.</div>`}</div>`;
@@ -732,8 +948,11 @@ document.getElementById("contenu").addEventListener("click", e => {
     etatCatalogue.page = Number(t.dataset.page);
     accueil(document.getElementById("champ").value);
     document.getElementById("contenu").scrollIntoView({ behavior: "smooth", block: "start" });
+  } else if (t.id === "lancer-recherche") {
+    etatCatalogue.texte = document.getElementById("filtre-texte").value.trim(); etatCatalogue.page = 1;
+    accueil(document.getElementById("champ").value);
   } else if (t.id === "reset-filtres") {
-    etatCatalogue.marque = ""; etatCatalogue.energie = ""; etatCatalogue.page = 1;
+    etatCatalogue.marque = ""; etatCatalogue.energie = ""; etatCatalogue.texte = ""; etatCatalogue.page = 1;
     accueil(document.getElementById("champ").value);
   } else if (t.id === "retour-annonces") {
     etat.vehicule = null; rendre();
@@ -749,6 +968,7 @@ document.getElementById("contenu").addEventListener("click", e => {
 document.getElementById("contenu").addEventListener("change", e => {
   if (e.target.id === "filtre-marque") etatCatalogue.marque = e.target.value;
   if (e.target.id === "filtre-energie") etatCatalogue.energie = e.target.value;
+  if (e.target.id === "filtre-texte") etatCatalogue.texte = e.target.value.trim();
   etatCatalogue.page = 1;
   accueil(document.getElementById("champ").value);
 });
@@ -763,6 +983,35 @@ document.getElementById("recherche").addEventListener("submit", e => {
   if (!texte) { zone.innerHTML = ""; return; }
   zone.innerHTML = `<p class="rappel">Vous recherchez « ${echapper(texte)} » ? Envoyez-nous le modèle, nous lançons la recherche auprès des concessions.</p>
     <div class="zone-whatsapp"><a class="bouton-or" href="${lienWhatsApp("Bonjour, je recherche : " + texte)}" target="_blank" rel="noopener">Envoyer ma recherche sur WhatsApp</a></div>`;
+});
+
+// Accueil : bande, défilé, arrivages et marques
+function renderAccueilHaut() {
+  const arrivages = ANNONCES.slice(0, 3);
+  document.getElementById("arrivages-liste").innerHTML = arrivages.length
+    ? `<div class="cartes">${arrivages.map(carte).join("")}</div>`
+    : `<div class="vide">Les premières annonces vérifiées seront publiées ici.</div>`;
+  document.getElementById("marques-grille").innerHTML = `<div class="grille-marques">` + MARQUES.map(m => {
+    const n = ANNONCES.filter(a => a.marque === m).length;
+    return `<button class="marque-tuile" data-marque="${echapper(m)}"><span class="nom">${echapper(m)}</span><span class="etat">${n ? n + " annonce(s)" : "Sur demande"}</span></button>`;
+  }).join("") + `</div>`;
+  document.getElementById("ticker-piste").innerHTML = [...MARQUES, ...MARQUES]
+    .map(m => `<span>${echapper(m)}</span><span class="pt">◆</span>`).join("");
+}
+renderAccueilHaut();
+document.getElementById("arrivages-liste").addEventListener("click", e => {
+  const b = e.target.closest(".bouton-fiche");
+  if (!b) return;
+  etat.vehicule = ANNONCES[Number(b.dataset.idx)];
+  document.getElementById("contenu").innerHTML = ficheDetail(etat.vehicule);
+  document.getElementById("contenu").scrollIntoView({ behavior: "smooth", block: "start" });
+});
+document.getElementById("marques-grille").addEventListener("click", e => {
+  const t = e.target.closest(".marque-tuile");
+  if (!t) return;
+  etat.marque = t.dataset.marque; etat.energie = "essence"; etat.charge = "22kw"; etat.vehicule = null;
+  rendre();
+  document.getElementById("contenu").scrollIntoView({ behavior: "smooth", block: "start" });
 });
 
 accueil("");
