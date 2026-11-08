@@ -3,88 +3,446 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>WoW Luxury Car Sourcing</title>
+<title>WoW Car Sourcing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root { --noir:#0d0d0d; --or:#c9a227; --champagne:#f3e9d2; --blanc:#ffffff; --gris:#6b6b6b; }
+  :root {
+    --noir: #060606;
+    --noir-2: #101010;
+    --champagne: #efe6cf;
+    /* Or véritable : dégradé métallique (feuille d'or), sans jaune vif */
+    --or: #B8862F;
+    --or-clair: #EBCD8B;
+    --or-fonce: #6E4F1A;
+    --or-metal: linear-gradient(135deg, #6E4F1A 0%, #C9974A 20%, #F4DDA4 42%, #B8862F 60%, #8A6324 80%, #E6C27A 100%);
+  }
   * { box-sizing: border-box; }
-  body { margin:0; font-family: Georgia, serif; background:var(--noir); color:var(--champagne); }
-  header { background:var(--noir); color:var(--or); padding:28px 20px; text-align:center; }
-  header h1 { margin:0; font-size:1.8rem; letter-spacing:2px; }
-  header p { margin:8px 0 0; color:var(--champagne); font-style:italic; }
-  nav { display:flex; flex-wrap:wrap; gap:8px; justify-content:center; padding:16px; background:var(--champagne); }
-  nav button { border:1px solid var(--or); background:var(--blanc); color:var(--noir); padding:8px 14px; cursor:pointer; font-family:inherit; }
-  nav button.actif { background:var(--or); color:var(--noir); }
-  main { max-width:1100px; margin:0 auto; padding:24px 16px 60px; }
-  h2 { color:var(--champagne); border-bottom:2px solid var(--or); padding-bottom:6px; }
-  h3 { color:var(--or); margin-top:28px; }
-  .cartes { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:16px; }
-  .carte { border:1px solid var(--or); padding:14px; background:#161616; }
-  .carte .titre { font-weight:bold; font-size:1.05rem; color:var(--champagne); }
-  .carte .meta { color:#a8a8a8; font-size:0.9rem; margin:6px 0; }
-  .carte .prix { font-size:1.15rem; color:var(--or); }
-  .carte a { color:var(--or); }
-  .vide { color:var(--gris); font-style:italic; padding:8px 0; }
-  .alerte { background:#161616; color:var(--champagne); border-left:4px solid var(--or); padding:10px 14px; margin:16px 0; }
-  footer { background:var(--noir); color:var(--champagne); text-align:center; padding:20px; font-size:0.85rem; }
-  .masque { display:none; }
-  .recherche-zone { max-width:640px; margin:0 auto 8px; }
-  .recherche { display:flex; gap:8px; }
-  .recherche input { flex:1; min-width:0; border:2px solid var(--or); border-radius:999px; background:var(--noir); color:var(--champagne); padding:14px 22px; font-family:inherit; font-size:1rem; outline:none; }
-  .recherche input::placeholder { color:#8c7a45; }
-  .recherche button, .bouton-or { border:none; border-radius:999px; background:var(--or); color:var(--noir); padding:14px 22px; font-family:inherit; font-weight:bold; cursor:pointer; text-decoration:none; display:inline-block; }
-  .rappel { color:var(--champagne); margin:14px 0 10px; text-align:center; }
-  .zone-whatsapp { text-align:center; }
-  .tuiles { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:16px; margin-top:20px; }
-  .tuile { border:1px solid var(--or); background:#161616; color:var(--champagne); padding:28px 12px; cursor:pointer; font-family:inherit; text-align:center; display:flex; flex-direction:column; gap:8px; }
-  .tuile:hover { background:var(--or); color:var(--noir); }
-  .tuile .nom { font-size:1.2rem; letter-spacing:1px; }
-  .tuile .etat { font-size:0.8rem; font-style:italic; opacity:.8; }
-  .retour { background:none; border:none; color:var(--or); cursor:pointer; font-family:inherit; padding:0; margin:12px 0 8px; font-size:1rem; }
-  .onglets { display:flex; flex-wrap:wrap; gap:8px; margin:14px 0 6px; }
-  .onglet { border:1px solid var(--or); background:transparent; color:var(--champagne); padding:8px 14px; border-radius:999px; cursor:pointer; font-family:inherit; }
-  .onglet.actif { background:var(--or); color:var(--noir); }
-  .onglets.secondaires { margin-top:4px; }
-  .signature { font-style:italic; color:var(--or); font-size:1.1rem; margin-top:6px; }
-  .contact { margin-top:18px; }
-  .ronds { display:flex; justify-content:center; gap:22px; }
-  .rond { width:64px; height:64px; border-radius:50%; border:2px solid var(--or); background:var(--or); color:var(--noir); display:flex; align-items:center; justify-content:center; font-size:1.7rem; text-decoration:none; }
-  .ronds-legende { display:flex; justify-content:center; gap:22px; font-size:0.8rem; color:var(--champagne); margin-top:6px; }
-  .ronds-legende span { width:64px; text-align:center; }
-  .dispo { color:var(--champagne); font-size:0.95rem; margin:14px 0 4px; }
-  .num { color:var(--or); font-size:1.1rem; margin:0; letter-spacing:1px; }
-  .presentation { margin:8px 0 28px; }
-  .presentation > p { color:var(--champagne); line-height:1.6; max-width:820px; }
-  .services { display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:14px; margin-top:16px; }
-  .service { border:1px solid var(--or); background:#161616; padding:14px; }
-  .service h3 { margin:0 0 6px; font-size:1rem; }
-  .service p { margin:0; color:#d8d0bb; font-size:0.92rem; line-height:1.5; }
-  .bouton-reserver { display:inline-block; margin-top:8px; padding:8px 14px; font-size:0.9rem; }
+  body {
+    margin: 0;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 18px;
+    color: var(--champagne);
+    background: radial-gradient(ellipse at top, #1b1508 0%, #060606 55%, #060606 100%);
+    min-height: 100vh;
+  }
+  .or-texte {
+    background: var(--or-metal);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .filet {
+    display: flex; align-items: center; gap: 14px; justify-content: center;
+    max-width: 380px; margin: 18px auto; color: var(--or);
+  }
+  .filet::before, .filet::after {
+    content: ""; flex: 1; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--or), transparent);
+  }
+  .filet span { font-size: 0.8rem; }
+
+  /* En-tête */
+  header { text-align: center; padding: 56px 20px 40px; }
+  .logo {
+    width: 150px; height: 150px; border-radius: 50%;
+    box-shadow: 0 0 0 4px #060606, 0 0 0 5px var(--or), 0 0 40px rgba(184,134,47,.25);
+    margin-bottom: 26px;
+  }
+  header h1 {
+    margin: 0;
+    font-size: clamp(2rem, 6vw, 3.2rem);
+    font-weight: 600;
+    letter-spacing: .22em;
+  }
+  .signature {
+    margin: 10px 0 0; font-style: italic; font-size: 1.25rem; color: var(--or-clair);
+  }
+  .contact { margin-top: 18px; }
+  .ronds { display: flex; justify-content: center; gap: 24px; }
+  .rond {
+    width: 72px; height: 72px; border-radius: 50%;
+    border: 1.5px solid var(--or);
+    background: radial-gradient(circle at 30% 25%, #221a0b, #0a0a0a);
+    display: flex; align-items: center; justify-content: center;
+    text-decoration: none; transition: background .3s, transform .3s;
+  }
+  .rond svg { width: 28px; height: 28px; fill: none; stroke: var(--or-clair); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+  .rond:hover { background: var(--or-metal); transform: translateY(-2px); }
+  .rond:hover svg { stroke: #120d04; }
+  .ronds-legende { display: flex; justify-content: center; gap: 24px; font-size: .85rem; letter-spacing: .12em; text-transform: uppercase; color: var(--or-clair); margin-top: 8px; }
+  .ronds-legende span { width: 72px; text-align: center; }
+  .dispo { margin: 18px 0 4px; font-size: 1.05rem; color: var(--champagne); }
+  .num { margin: 0; font-size: 1.3rem; letter-spacing: .12em; }
+  .num .or-texte { font-weight: 600; }
+
+  /* Titres de sections */
+  h2 {
+    text-align: center; font-weight: 600; font-size: 1.9rem;
+    letter-spacing: .14em; text-transform: uppercase; margin: 0 0 6px;
+  }
+  h2 .or-texte { display: inline-block; }
+  h3 { color: var(--or-clair); font-weight: 600; }
+
+  main { max-width: 1100px; margin: 0 auto; padding: 24px 16px 64px; }
+
+  /* Présentation */
+  .presentation { max-width: 900px; margin: 0 auto; padding: 40px 20px 20px; text-align: center; }
+  .presentation > p.intro {
+    color: var(--champagne); line-height: 1.7; font-size: 1.2rem; margin: 14px auto 0; max-width: 760px;
+  }
+  .promesses {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 30px 0 0;
+  }
+  .promesses div {
+    border-top: 1px solid var(--or); padding-top: 14px; font-size: 1.05rem; color: var(--champagne);
+  }
+  .promesses strong { display: block; color: var(--or-clair); font-weight: 600; font-size: 1.15rem; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 6px; }
+
+  /* Recherche */
+  .recherche-zone { max-width: 680px; margin: 30px auto 0; padding: 0 16px; }
+  .recherche { display: flex; gap: 10px; }
+  .recherche input {
+    flex: 1; min-width: 0;
+    border: 1.5px solid var(--or); border-radius: 999px;
+    background: rgba(10,10,10,.9); color: var(--champagne);
+    padding: 15px 24px; font-family: inherit; font-size: 1.05rem; outline: none;
+  }
+  .recherche input:focus { box-shadow: 0 0 0 3px rgba(184,134,47,.25); }
+  .recherche input::placeholder { color: var(--or); opacity: .85; }
+  .recherche button, .bouton-or {
+    border: none; border-radius: 999px;
+    background: var(--or-metal); color: #120d04;
+    padding: 14px 26px; font-family: inherit; font-weight: 700;
+    letter-spacing: .1em; text-transform: uppercase; font-size: .95rem;
+    cursor: pointer; text-decoration: none; display: inline-block;
+    box-shadow: 0 6px 18px rgba(184,134,47,.22);
+  }
+  .rappel { color: var(--champagne); margin: 16px 0 12px; text-align: center; font-size: 1.1rem; }
+  .zone-whatsapp { text-align: center; }
+
+  /* Alerte */
+  .alerte {
+    max-width: 760px; margin: 36px auto 10px; text-align: center;
+    border: 1px solid var(--or); border-radius: 28px; padding: 18px 26px;
+    background: rgba(16,16,16,.8); color: var(--champagne); font-size: 1.02rem; line-height: 1.55;
+  }
+
+  /* Tuiles de marques */
+  .tuiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 18px; margin-top: 24px; }
+  .tuile {
+    aspect-ratio: 1; border-radius: 50%;
+    border: 1px solid var(--or);
+    background: radial-gradient(circle at 30% 20%, #211a0a, #0b0b0b 70%);
+    color: var(--champagne); padding: 24px 14px; cursor: pointer; font-family: inherit;
+    display: flex; flex-direction: column; justify-content: center; gap: 8px; text-align: center;
+    transition: background .35s, transform .35s, box-shadow .35s;
+  }
+  .tuile:hover { background: var(--or-metal); color: #120d04; transform: translateY(-3px); box-shadow: 0 10px 26px rgba(184,134,47,.25); }
+  .tuile .nom { font-size: 1.35rem; letter-spacing: .1em; text-transform: uppercase; font-weight: 600; }
+  .tuile .etat { font-size: .9rem; font-style: italic; opacity: .8; }
+  .vide { color: #9b927c; font-style: italic; padding: 10px 0; text-align: center; }
+
+  /* Pages marque */
+  .retour { background: none; border: none; color: var(--or-clair); cursor: pointer; font-family: inherit; font-size: 1.05rem; padding: 0; margin: 12px 0 4px; letter-spacing: .06em; }
+  .retour:hover { color: var(--or); }
+  main h2 { margin-top: 18px; }
+  .onglets { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 18px 0 6px; }
+  .onglets.secondaires { margin-top: 4px; }
+  .onglet {
+    border: 1px solid var(--or); background: transparent; color: var(--champagne);
+    padding: 9px 18px; border-radius: 999px; cursor: pointer; font-family: inherit; font-size: 1rem; letter-spacing: .04em;
+    transition: background .3s;
+  }
+  .onglet:hover { background: rgba(184,134,47,.15); }
+  .onglet.actif { background: var(--or-metal); color: #120d04; border-color: transparent; font-weight: 700; }
+  h4 { margin: 14px 0 6px; font-weight: 500; color: #bdb29a; font-size: 1rem; }
+
+  /* Fiches véhicules (liste) */
+  .cartes { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 22px; margin-top: 16px; }
+  .fiche {
+    border: 1px solid var(--or); border-radius: 28px; padding: 28px 26px;
+    background: linear-gradient(160deg, #1a1408 0%, #0a0a0a 60%);
+    display: flex; flex-direction: column; gap: 6px;
+  }
+  .fiche .badge-marque { font-size: .75rem; letter-spacing: .2em; text-transform: uppercase; color: var(--or-clair); }
+  .fiche .titre { font-size: 1.35rem; font-weight: 600; color: var(--champagne); line-height: 1.25; }
+  .fiche .meta { color: #a79f8a; font-size: .95rem; }
+  .fiche .prix { font-size: 1.6rem; font-weight: 600; color: var(--or-clair); margin: 10px 0 4px; }
+  .fiche .actions { display: flex; flex-direction: column; gap: 10px; margin-top: auto; padding-top: 14px; }
+
+  /* Boutons pleine largeur et contour */
+  .pleine { display: block !important; width: 100%; text-align: center; box-sizing: border-box; }
+  .bouton-contour {
+    border: 1px solid var(--or); background: transparent; color: var(--or-clair);
+    border-radius: 999px; padding: 12px 22px; font-family: inherit;
+    letter-spacing: .1em; text-transform: uppercase; font-size: .9rem; cursor: pointer;
+    text-decoration: none; display: inline-block; text-align: center; box-sizing: border-box;
+  }
+  .bouton-contour:hover { background: rgba(184,134,47,.15); }
+
+  /* Bandeau, infos et barre de navigation, comme la page Krone */
+  .bandeau { background: var(--or-metal); color: #120d04; text-align: center; padding: 9px 16px; font-size: .86rem; letter-spacing: .06em; font-weight: 700; }
+  .infos { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; padding: 10px 24px; font-size: .9rem; color: var(--or-clair); border-bottom: 1px solid rgba(184,134,47,.3); }
+  .infos a { color: var(--or-clair); text-decoration: none; }
+  .navbar {
+    position: sticky; top: 0; z-index: 50; display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    padding: 12px 24px; background: rgba(6,6,6,.94); backdrop-filter: blur(6px); border-bottom: 1px solid rgba(184,134,47,.5);
+  }
+  .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--or-clair); font-weight: 600; letter-spacing: .16em; font-size: .95rem; text-transform: uppercase; }
+  .nav-logo img { width: 44px; height: 44px; border-radius: 50%; }
+  .nav-liens { display: flex; gap: 22px; flex-wrap: wrap; }
+  .nav-liens a { color: var(--champagne); text-decoration: none; text-transform: uppercase; letter-spacing: .12em; font-size: .82rem; }
+  .nav-liens a:hover { color: var(--or-clair); }
+  .nav-actions { display: flex; align-items: center; gap: 12px; }
+  .nav-actions .bouton-or { padding: 10px 18px; font-size: .8rem; }
+  .rond-mini { width: 42px; height: 42px; border-radius: 50%; border: 1px solid var(--or); display: inline-flex; align-items: center; justify-content: center; background: radial-gradient(circle at 30% 25%, #221a0b, #0a0a0a); }
+  .rond-mini svg { width: 20px; height: 20px; fill: none; stroke: var(--or-clair); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+  section, .recherche-zone, #contact, #prestations { scroll-margin-top: 90px; }
+  @media (max-width: 900px) {
+    .nav-liens { display: none; }
+    .navbar { padding: 10px 16px; }
+    .infos { justify-content: center; text-align: center; }
+  }
+
+  /* Accroche d'accueil : texte à gauche, photo à droite */
+  .hero {
+    max-width: 1200px; margin: 0 auto; padding: 30px 20px 10px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: center;
+  }
+  .hero-texte h1 { margin: 0 0 18px; font-size: clamp(2.3rem, 5vw, 3.9rem); font-weight: 600; line-height: 1.05; }
+  .hero-texte h1 em { display: block; font-style: italic; font-weight: 600; }
+  .hero-texte p { font-size: 1.15rem; line-height: 1.7; color: var(--champagne); margin: 0 0 28px; max-width: 520px; }
+  .hero-boutons { display: flex; flex-wrap: wrap; gap: 12px; }
+  .hero-boutons .bouton-or, .hero-boutons .bouton-contour { padding: 15px 26px; }
+  .hero-photo {
+    position: relative; min-height: 380px; border-radius: 28px; overflow: hidden;
+    border: 1px solid var(--or); background: url(voiture.png) center / cover no-repeat;
+  }
+  .hero-photo::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(90deg, #060606 0%, rgba(6,6,6,0) 40%);
+  }
+  @media (max-width: 800px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-photo { min-height: 260px; order: -1; }
+    .hero-photo::after { background: linear-gradient(180deg, rgba(6,6,6,0) 40%, #060606 100%); }
+  }
+
+  /* Catalogue : bandeau, filtres, cartes annonces, pagination */
+  .hero-liste { text-align: center; padding: 30px 0 6px; }
+  .eyebrow { letter-spacing: .3em; text-transform: uppercase; font-size: .8rem; color: var(--or-clair); }
+  .hero-liste .sous { color: #c9bfa8; margin: 6px 0 0; }
+  .filtres { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: center; margin: 22px 0 8px; }
+  .filtres select {
+    border: 1px solid var(--or); background: #0b0b0b; color: var(--champagne);
+    border-radius: 999px; padding: 11px 18px; font-family: inherit; font-size: 1rem; min-width: 180px;
+  }
+  .compte { text-align: center; color: #a79f8a; font-size: .95rem; margin: 6px 0 0; }
+  .annonce {
+    border: 1px solid rgba(184,134,47,.5); border-radius: 24px; overflow: hidden;
+    background: #0c0b08; display: flex; flex-direction: column;
+    transition: transform .3s, border-color .3s;
+  }
+  .annonce:hover { transform: translateY(-4px); border-color: var(--or); }
+  .visuel-mini {
+    position: relative; aspect-ratio: 16 / 10;
+    background: radial-gradient(circle at 50% 40%, #2a2010, #080808 70%);
+    display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
+  }
+  .visuel-mini .vm-marque { font-size: 1.7rem; font-style: italic; font-weight: 600; }
+  .visuel-mini img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .marque-petit { font-size: .72rem; letter-spacing: .2em; text-transform: uppercase; color: var(--or-clair); }
+  .annonce .titre .annee { font-size: .9em; font-weight: 400; color: #a79f8a; }
+  .visuel-mini small { color: #a79f8a; font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; margin-top: 6px; }
+  .coin { position: absolute; top: 12px; left: 12px; background: var(--or-metal); color: #120d04; border-radius: 999px; padding: 4px 12px; font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; font-weight: 700; }
+  .coin-droit { position: absolute; bottom: 12px; right: 12px; background: rgba(0,0,0,.75); border: 1px solid var(--or); color: var(--or-clair); border-radius: 999px; padding: 4px 12px; font-size: .82rem; }
+  .annonce .corps { padding: 18px 20px 20px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+  .annonce .titre { font-size: 1.3rem; font-weight: 600; color: var(--champagne); }
+  .annonce .meta { color: #a79f8a; font-size: .92rem; }
+  .puces span { display: inline-block; border: 1px solid rgba(184,134,47,.5); border-radius: 999px; padding: 3px 11px; font-size: .8rem; color: #c9bfa8; margin: 6px 6px 0 0; }
+  .annonce .pied { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-top: auto; padding-top: 14px; border-top: 1px solid rgba(184,134,47,.3); }
+  .annonce .prix { font-size: 1.5rem; font-weight: 600; color: var(--or-clair); }
+  .annonce .bouton-or { padding: 10px 18px; font-size: .85rem; }
+  .pagination { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin: 34px 0 10px; }
+  .pagination button {
+    min-width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--or);
+    background: transparent; color: var(--champagne); font-family: inherit; font-size: 1rem; cursor: pointer;
+  }
+  .pagination button.actif { background: var(--or-metal); color: #120d04; border-color: transparent; font-weight: 700; }
+  .section-marques { text-align: center; margin-top: 56px; }
+
+  /* Fiche détaillée véhicule */
+  .detail { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 28px; align-items: start; margin-top: 10px; }
+  .badges { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+  .badge { border: 1px solid var(--or); border-radius: 999px; padding: 5px 14px; font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; color: var(--or-clair); }
+  .badge.plein { background: var(--or-metal); color: #120d04; border-color: transparent; font-weight: 700; }
+  .visuel {
+    aspect-ratio: 16 / 10; border-radius: 28px; border: 1px solid var(--or);
+    background: radial-gradient(circle at 50% 40%, #2a2010, #080808 70%);
+    display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 20px;
+  }
+  .visuel .grand { font-size: clamp(1.8rem, 4.5vw, 2.8rem); font-style: italic; font-weight: 600; }
+  .visuel .petit-titre { font-size: clamp(1.1rem, 3vw, 1.6rem); color: var(--champagne); }
+  .visuel small { color: #a79f8a; letter-spacing: .12em; text-transform: uppercase; margin-top: 10px; font-size: .78rem; }
+  .bloc { border: 1px solid rgba(184,134,47,.45); border-radius: 24px; padding: 22px 24px; margin-top: 18px; }
+  .bloc h4 { margin: 0 0 14px; font-size: .85rem; letter-spacing: .22em; text-transform: uppercase; color: var(--or-clair); font-weight: 600; }
+  .bloc p { margin: 0 0 10px; line-height: 1.6; color: var(--champagne); }
+  .bloc a { color: var(--or-clair); }
+  .grille-caracs { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 24px; }
+  .grille-caracs span { display: block; font-size: .75rem; letter-spacing: .14em; text-transform: uppercase; color: #a79f8a; }
+  .grille-caracs strong { font-size: 1.1rem; font-weight: 600; color: var(--champagne); }
+  .confiance { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .confiance div { border: 1px solid rgba(184,134,47,.4); border-radius: 18px; padding: 14px 16px; background: rgba(16,16,16,.8); }
+  .confiance strong { display: block; color: var(--or-clair); font-weight: 600; font-size: 1.05rem; }
+  .confiance span { font-size: .92rem; color: #c9bfa8; line-height: 1.4; }
+  .prix-panneau {
+    position: sticky; top: 20px; border: 1px solid var(--or); border-radius: 28px; padding: 28px 24px;
+    background: linear-gradient(170deg, #1a1408, #080808 70%);
+  }
+  .prix-grand { font-size: 2.6rem; font-weight: 600; color: var(--or-clair); line-height: 1.05; margin: 6px 0 4px; }
+  .petit { font-size: .9rem; font-style: italic; color: #a79f8a; }
+  .frais { border-top: 1px solid rgba(184,134,47,.35); margin: 18px 0; padding-top: 14px; font-size: .98rem; color: #c9bfa8; line-height: 1.7; }
+  .prix-panneau .actions { display: flex; flex-direction: column; gap: 12px; }
+
+  /* Services : voiture photo, ronds transparents dorés */
+  .services {
+    position: relative; display: block;
+    aspect-ratio: 1060 / 470; max-width: 940px; margin: 36px auto 0;
+    background: url(voiture.png) center / 100% 100% no-repeat;
+  }
+  .services .service {
+    position: absolute; width: 15%; aspect-ratio: 1;
+    transform: translate(-50%, -50%);
+    border: 1px solid var(--or); border-radius: 50%;
+    background: rgba(6,6,6,.55); backdrop-filter: blur(2px);
+    padding: 8px; margin: 0;
+    display: flex; flex-direction: column; justify-content: center; text-align: center;
+  }
+  .services .service h3 {
+    margin: 0; font-size: .66rem; letter-spacing: .06em; text-transform: uppercase;
+    color: var(--or-clair); text-shadow: 0 0 4px #000, 0 1px 2px #000;
+  }
+  .services .service p {
+    margin: 3px 0 0; font-size: .54rem; line-height: 1.25; color: #ffffff;
+    text-shadow: 0 0 4px #000, 0 1px 2px #000;
+  }
+  /* Pare-brise et lunette arrière : trapèzes */
+  .services .service:nth-child(2), .services .service:nth-child(3) {
+    border: none; border-radius: 0; width: 19%; aspect-ratio: 1.6;
+    background: rgba(6,6,6,.55);
+    clip-path: polygon(22% 0, 78% 0, 100% 100%, 0 100%);
+  }
+  .services .service:nth-child(2) { left: 44.3%; top: 13%; }
+  .services .service:nth-child(3) { left: 66%;   top: 13%; }
+  /* Carrosserie */
+  .services .service:nth-child(4) { left: 17%;   top: 42.6%; border-radius: 0; clip-path: polygon(18% 0, 100% 0, 100% 100%, 0 100%, 0 30%); border: none; }
+  .services .service:nth-child(5) { left: 36.8%; top: 46.8%; border-radius: 0; }
+  .services .service:nth-child(6) { left: 55.7%; top: 46.8%; border-radius: 0; }
+  .services .service:nth-child(7) { left: 81.1%; top: 40.6%; border-radius: 0; clip-path: polygon(0 0, 82% 0, 100% 30%, 100% 100%, 0 100%); border: none; }
+  /* Roues */
+  .services .service:nth-child(8) { left: 65.6%; top: 64.9%; width: 11%; }
+  .services .service:nth-child(9) { left: 95.8%; top: 62.8%; width: 10%; }
+
+  .services-sous-titre { text-align: center; color: var(--or-clair); font-style: italic; margin: 8px 0 0; font-size: 1.05rem; }
+
+  @media (max-width: 700px) {
+    body { font-size: 17px; }
+    .promesses { grid-template-columns: 1fr; }
+    .services { background: none; aspect-ratio: auto; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .services .service {
+      position: static; transform: none; width: auto; aspect-ratio: auto;
+      clip-path: none !important; border: 1px solid var(--or) !important;
+      border-radius: 22px !important; padding: 18px; background: rgba(16,16,16,.85) !important;
+    }
+    .services .service h3 { font-size: .9rem; }
+    .services .service p { font-size: .8rem; }
+    .cartes { grid-template-columns: 1fr; }
+    .detail { grid-template-columns: 1fr; }
+    .prix-panneau { position: static; }
+    .confiance { grid-template-columns: 1fr; }
+    .grille-caracs { grid-template-columns: 1fr 1fr; }
+    .tuiles { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .tuile .nom { font-size: 1rem; }
+  }
+
+  footer {
+    text-align: center; padding: 28px 20px 36px; font-size: .95rem; letter-spacing: .06em;
+    color: var(--or-clair); border-top: 1px solid rgba(184,134,47,.35);
+  }
 </style>
 </head>
 <body>
 
+<div class="bandeau" id="top">Sourcing de véhicules auprès des concessions · Accompagnement de la recherche à la remise des clés</div>
+<div class="infos">
+  <span>Disponible à tout moment sur rendez-vous</span>
+  <span><a href="tel:+33769276261">+33 7 69 27 62 61</a></span>
+</div>
+<nav class="navbar">
+  <a class="nav-logo" href="#top"><img src="logo.png" alt=""><span>WoW Car Sourcing</span></a>
+  <div class="nav-liens">
+    <a href="#top">Accueil</a>
+    <a href="#contenu">Véhicules</a>
+    <a href="#pourquoi">Pourquoi nous</a>
+    <a href="#prestations">Prestations</a>
+    <a href="#recherche">Recherche</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="nav-actions">
+    <a class="bouton-or" href="#contenu">Voir les véhicules</a>
+    <a class="rond-mini" href="https://wa.me/33769276261" target="_blank" rel="noopener" aria-label="WhatsApp">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.5 7.5L3 21l2-5.4A8.5 8.5 0 1 1 21 11.5z"/></svg>
+    </a>
+  </div>
+</nav>
+
 <header>
-  <img src="logo.png" alt="WoW Car Sourcing Premium" style="width:150px;height:150px;border-radius:50%;margin-bottom:10px">
-  <h1>WoW CAR SOURCING</h1>
+  <img class="logo" src="logo.png" alt="WoW Car Sourcing Premium">
+  <h1 class="or-texte">WOW CAR SOURCING</h1>
+  <div class="filet"><span>◆</span></div>
   <p class="signature">Christelle, votre partenaire de Confiance</p>
-  <div class="contact">
+  <div class="contact" id="contact">
     <div class="ronds">
-      <a class="rond" href="tel:+33769276261" aria-label="Appeler">📞</a>
-      <a class="rond" href="https://wa.me/33769276261" target="_blank" rel="noopener" aria-label="Envoyer un message WhatsApp">💬</a>
+      <a class="rond" href="tel:+33769276261" aria-label="Appeler">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      </a>
+      <a class="rond" href="https://wa.me/33769276261" target="_blank" rel="noopener" aria-label="Envoyer un message WhatsApp">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.5 7.5L3 21l2-5.4A8.5 8.5 0 1 1 21 11.5z"/></svg>
+      </a>
     </div>
     <div class="ronds-legende"><span>Appeler</span><span>WhatsApp</span></div>
     <p class="dispo">Disponible à tout moment pour échanger sur rendez-vous, comme je suis chauffeure VTC.</p>
-    <p class="num">+33 7 69 27 62 61</p>
+    <p class="num"><span class="or-texte">+33 7 69 27 62 61</span></p>
   </div>
 </header>
 
-<section class="presentation">
-  <h2>Pourquoi WoW Car Sourcing ?</h2>
-  <p>J'ai créé WoW Car Sourcing pour proposer un service clé en main et des conseils d'achat à ceux qui n'y connaissent rien. Selon vos attentes, je vous trouve le véhicule le plus adapté, à un prix raisonnable.</p>
+<section class="hero">
+  <div class="hero-texte">
+    <h1>Je chasse l'exceptionnel,<br><span class="or-texte">vous prenez le volant</span></h1>
+    <p>WoW Car Sourcing vous accompagne dans la recherche de votre véhicule, auprès des Concessions. Sélection, conseil d'achat, démarches et livraison : je m'occupe de tout.</p>
+    <div class="hero-boutons">
+      <a class="bouton-or" href="#contenu">Voir les véhicules</a>
+      <a class="bouton-contour" href="https://wa.me/33769276261" target="_blank" rel="noopener">Parler à Christelle</a>
+    </div>
+  </div>
+  <div class="hero-photo" role="img" aria-label="Voiture de sport"></div>
+</section>
+
+<section class="presentation" id="pourquoi">
+  <div class="filet"><span>◆</span></div>
+  <h2><span class="or-texte">Pourquoi WoW Car Sourcing ?</span></h2>
+  <p class="intro">J'ai créé WoW Car Sourcing pour proposer un service clé en main et des conseils d'achat à ceux qui n'y connaissent rien. Selon vos attentes, je vous trouve le véhicule le plus adapté.</p>
+  <div class="promesses">
+    <div><strong>Discrétion</strong>Une recherche menée avec soin, dans le respect de vos attentes.</div>
+    <div><strong>Concession</strong>Uniquement des véhicules vendus par des concessions, jamais par des mandataires.</div>
+    <div><strong>Accompagnement</strong>De la recherche jusqu'à la remise des clés.</div>
+  </div>
+  <p class="services-sous-titre" id="prestations">Mes prestations</p>
   <div class="services">
     <div class="service"><h3>Clé en main</h3><p>Je m'occupe de tout, de la recherche jusqu'à la remise des clés.</p></div>
     <div class="service"><h3>Conseil d'achat</h3><p>Pour ceux qui n'y connaissent rien, je vous guide et je vous trouve le véhicule le plus adapté à vos attentes.</p></div>
-    <div class="service"><h3>Prix raisonnable</h3><p>Un véhicule issu de concessions officielles, à un prix raisonnable.</p></div>
     <div class="service"><h3>Estimation et reprise</h3><p>Estimation et reprise de votre ancien véhicule si vous en achetez un nouveau.</p></div>
     <div class="service"><h3>Financement</h3><p>Je vous propose un partenariat avec une banque professionnelle du Crédit Agricole.</p></div>
     <div class="service"><h3>Démarches administratives</h3><p>Je m'occupe de vos démarches administratives, notamment la carte grise.</p></div>
@@ -94,7 +452,7 @@
   </div>
 </section>
 
-<div class="recherche-zone">
+<div class="recherche-zone" id="recherche">
   <form id="recherche" class="recherche">
     <input id="champ" type="search" placeholder="Indiquez le modèle recherché (ex. Porsche 911 GT3)" autocomplete="off">
     <button type="submit">Rechercher</button>
@@ -104,13 +462,13 @@
 
 <main>
   <div class="alerte">
-    Tous les véhicules présentés sur ce site ne sont pas stockés par mes soins : ils sont en concession automobile officielle de la marque. Seules les annonces vendues par une concession officielle figurent ici. Les prix et kilométrages sont donnés à titre indicatif et doivent être reconfirmés auprès de la concession. Le malus est à calculer avant tout engagement pour les véhicules de moins de 6 000 km.
+    Tous les véhicules présentés sur ce site ne sont pas stockés par mes soins : ils sont en concession automobile. Seules les annonces vendues par une concession figurent ici. Les prix et kilométrages sont donnés à titre indicatif et doivent être reconfirmés auprès de la concession. Le malus est à calculer avant tout engagement pour les véhicules de moins de 6 000 km.
   </div>
   <div id="contenu"></div>
 </main>
 
 <footer>
-  WoW Luxury Car Sourcing · [Raison sociale, SIREN et adresse à compléter]
+  WoW Car Sourcing · [Raison sociale, SIREN et adresse à compléter]
 </footer>
 
 <script>
@@ -165,7 +523,7 @@ const ANNONCES_NON_VERIFIEES = [
   { marque:"Bentley", energie:"essence", charge:"na", modele:"Continental GT Speed", annee:2015, km:72630, prix:84900, concession:"Gottfried Schultz Premium", url:"https://www.autoscout24.com/offers/bentley-continental-gt-speed-ceramic-naim-acc-massage-gasoline-black-cat_ma11mo76439-01843762-4ffe-4366-90be-a3439b181759" }
 ];
 
-// Marques sans annonce vérifiée à ce jour : Lamborghini, Lotus, MINI, BYD, Jaecoo, Xiaomi
+// Marques sans annonce vérifiée à ce jour : Lamborghini, Lotus, MINI, BYD, Jaecoo, Chevrolet, Xiaomi, Alpine
 // (elles apparaîtront ici dès que des concessions officielles auront été vérifiées)
 
 const ETIQUETTES_CHARGE = {
@@ -184,63 +542,6 @@ function formatKm(k) {
   return k.toLocaleString("fr-FR") + " km";
 }
 
-function carte(a) {
-  const annee = a.annee ? a.annee : "Année non affichée";
-  return `<div class="carte">
-    <div class="titre">${a.modele}</div>
-    <div class="meta">${annee} · ${formatKm(a.km)}</div>
-    <div class="meta">${a.concession}</div>
-    <div class="prix">${formatPrix(a.prix)}</div>
-    <div class="meta"><a href="${a.url}" target="_blank" rel="noopener">Voir l'annonce</a></div>
-    <div class="meta"><a class="bouton-or bouton-reserver" href="${lienWhatsApp("Bonjour Christelle, je souhaite réserver : " + a.marque + " " + a.modele + (a.annee ? " (" + a.annee + ")" : "") + (a.km ? ", " + a.km + " km" : "") + (a.prix ? ", " + a.prix + " €" : "") + ", concession " + a.concession + ".")}" target="_blank" rel="noopener">Réserver ce véhicule</a></div>
-  </div>`;
-}
-
-function sectionMarque(marque) {
-  const liste = ANNONCES.filter(a => a.marque === marque);
-  let html = `<h2>${marque}</h2>`;
-  for (const en of ENERGIES) {
-    const dansEnergie = liste.filter(a => a.energie === en.id);
-    html += `<h3>${en.label}</h3>`;
-    if (en.id === "electrique" || en.id.startsWith("hybride")) {
-      // Séparation par type de charge, pour thermiques hybrides et électriques
-      const sousTypes = [
-        { id:"22kw", label:"Charge sur borne 22 kW uniquement" },
-        { id:"toutes", label:"Charge sur toutes les bornes" },
-        { id:"verifier", label:"Type de charge à vérifier" }
-      ];
-      for (const st of sousTypes) {
-        const items = dansEnergie.filter(a => a.charge === st.id);
-        html += `<h4 style="margin:12px 0 6px;font-weight:normal;color:#bdbdbd">${st.label}</h4>`;
-        html += items.length
-          ? `<div class="cartes">${items.map(carte).join("")}</div>`
-          : `<div class="vide">Aucune annonce vérifiée pour le moment.</div>`;
-      }
-    } else {
-      html += dansEnergie.length
-        ? `<div class="cartes">${dansEnergie.map(carte).join("")}</div>`
-        : `<div class="vide">Aucune annonce vérifiée pour le moment.</div>`;
-    }
-  }
-  return html;
-}
-
-function afficher(marque) {
-  document.getElementById("contenu").innerHTML = sectionMarque(marque);
-  document.querySelectorAll("#menu button").forEach(b => {
-    b.classList.toggle("actif", b.dataset.marque === marque);
-  });
-}
-
-// Menu : une marque par bouton
-const menu = document.createElement("div"); // ancien menu, remplacé par les tuiles
-MARQUES.forEach((m, i) => {
-  const b = document.createElement("button");
-  b.textContent = m;
-  b.dataset.marque = m;
-  b.addEventListener("click", () => afficher(m));
-  menu.appendChild(b);
-});
 // ----- Accueil en tuiles, recherche et pages par marque -----
 const WA_NUMERO = "33769276261";
 const CHARGES = [
@@ -255,14 +556,141 @@ function echapper(t) {
 function lienWhatsApp(texte) {
   return "https://wa.me/" + WA_NUMERO + "?text=" + encodeURIComponent(texte);
 }
+function messageReservation(a) {
+  return "Bonjour Christelle, je souhaite réserver : " + a.marque + " " + a.modele + (a.annee ? " (" + a.annee + ")" : "") + (a.km ? ", " + a.km + " km" : "") + (a.prix ? ", " + a.prix + " €" : "") + ", concession " + a.concession + ".";
+}
+function libelleEnergie(id) {
+  const e = ENERGIES.find(x => x.id === id);
+  return e ? e.label : "";
+}
+function carte(a) {
+  const idx = ANNONCES.indexOf(a);
+  const avecCharge = a.energie === "electrique" || a.energie.startsWith("hybride");
+  const charge = avecCharge && a.charge ? CHARGES.find(c => c.id === a.charge) : null;
+  // Photo du véhicule : chemin indiqué dans "photo" (ex. "photos/porsche-718-1.jpg"), sinon emplacement vide
+  const media = a.photo
+    ? `<img src="${echapper(a.photo)}" alt="${echapper(a.marque + " " + a.modele)}" loading="lazy">`
+    : `<div class="vm-marque or-texte">${echapper(a.marque)}</div><small>Photos à venir</small>`;
+  return `<article class="annonce">
+    <div class="visuel-mini">
+      ${media}
+      <span class="coin">Concession</span>
+      <span class="coin-droit">${formatKm(a.km)}</span>
+    </div>
+    <div class="corps">
+      <div class="marque-petit">${echapper(a.marque)}</div>
+      <div class="titre">${echapper(a.modele)}${a.annee ? ` <span class="annee">· ${a.annee}</span>` : ""}</div>
+      <div class="puces"><span>${libelleEnergie(a.energie)}</span>${charge ? `<span>${charge.label}</span>` : ""}</div>
+      <div class="pied">
+        <div class="prix">${formatPrix(a.prix)}</div>
+        <button class="bouton-contour bouton-fiche" data-idx="${idx}">Voir →</button>
+      </div>
+    </div>
+  </article>`;
+}
+const CONFIANCE = [
+  { titre:"Concession", texte:"Véhicule vendu par la concession." },
+  { titre:"Clé en main", texte:"De la recherche jusqu'à la remise des clés." },
+  { titre:"Conseil d'achat", texte:"Je vous guide selon vos attentes et votre budget." },
+  { titre:"Démarches", texte:"Je m'occupe de la carte grise et des formalités." },
+  { titre:"Financement", texte:"Partenariat avec une banque du Crédit Agricole." },
+  { titre:"Livraison", texte:"Selon la distance, y compris dans l'Union européenne." }
+];
+function ficheDetail(a) {
+  const avecCharge = a.energie === "electrique" || a.energie.startsWith("hybride");
+  const charge = avecCharge && a.charge ? CHARGES.find(c => c.id === a.charge) : null;
+  const caracs = [
+    ["Marque", a.marque],
+    ["Modèle", a.modele],
+    ["Année", a.annee || "Non affichée"],
+    ["Kilométrage", formatKm(a.km)],
+    ["Carburant", libelleEnergie(a.energie)],
+    ["Concession", a.concession]
+  ];
+  if (charge) caracs.push(["Recharge", charge.label]);
+  return `<button class="retour" id="retour-annonces">← Retour aux annonces</button>
+  <div class="detail">
+    <div class="detail-gauche">
+      <div class="badges"><span class="badge plein">Concession</span><span class="badge">${echapper(libelleEnergie(a.energie))}</span></div>
+      <div class="visuel">
+        <div class="grand or-texte">${echapper(a.marque)}</div>
+        <div class="petit-titre">${echapper(a.modele)}</div>
+        <small>Photos à venir</small>
+      </div>
+      <div class="bloc"><h4>Caractéristiques</h4>
+        <div class="grille-caracs">${caracs.map(([k, v]) => `<div><span>${k}</span><strong>${echapper(v)}</strong></div>`).join("")}</div>
+      </div>
+      <div class="bloc"><h4>Mon accompagnement</h4>
+        <div class="confiance">${CONFIANCE.map(c => `<div><strong>${c.titre}</strong><span>${c.texte}</span></div>`).join("")}</div>
+      </div>
+      <div class="bloc"><h4>Description</h4>
+        <p>Véhicule proposé par ${echapper(a.concession)}. L'année, le kilométrage et le prix sont donnés à titre indicatif : ils sont à reconfirmer auprès de la concession avant toute décision.</p>
+        <p><a href="${a.url}" target="_blank" rel="noopener">Voir l'annonce chez la concession</a></p>
+      </div>
+    </div>
+    <aside class="prix-panneau">
+      <div class="petit">Prix indicatif</div>
+      <div class="prix-grand">${formatPrix(a.prix)}</div>
+      <div class="petit">À reconfirmer auprès de la concession</div>
+      <div class="frais">
+        <div>Livraison : selon la distance, sur devis</div>
+        <div>Gravage : tarif propre à la concession</div>
+      </div>
+      <div class="actions">
+        <a class="bouton-or pleine" href="${lienWhatsApp(messageReservation(a))}" target="_blank" rel="noopener">Réserver ce véhicule</a>
+        <a class="bouton-contour pleine" href="${lienWhatsApp("Bonjour Christelle, j'aimerais des informations sur : " + a.marque + " " + a.modele + ".")}" target="_blank" rel="noopener">Contacter sur WhatsApp</a>
+      </div>
+    </aside>
+  </div>`;
+}
 function annoncesPour(marque, energie, charge) {
   const avecCharge = energie === "electrique" || energie.startsWith("hybride");
   return ANNONCES.filter(a => a.marque === marque && a.energie === energie && (!avecCharge || a.charge === charge));
 }
+// Filtres et pagination du catalogue
+const etatCatalogue = { marque:"", energie:"", page:1 };
+const PAR_PAGE = 9;
+
 function accueil(filtre) {
+  etat.vehicule = null;
   const f = (filtre || "").trim().toLowerCase();
   const marques = MARQUES.filter(m => !f || m.toLowerCase().includes(f));
-  let html = marques.length
+  const liste = ANNONCES.filter(a =>
+    (!etatCatalogue.marque || a.marque === etatCatalogue.marque) &&
+    (!etatCatalogue.energie || a.energie === etatCatalogue.energie));
+  const pages = Math.max(1, Math.ceil(liste.length / PAR_PAGE));
+  if (etatCatalogue.page > pages) etatCatalogue.page = 1;
+  const debut = (etatCatalogue.page - 1) * PAR_PAGE;
+  const visibles = liste.slice(debut, debut + PAR_PAGE);
+
+  const options = (valeurs, actuel, tout) => `<option value="">${tout}</option>` +
+    valeurs.map(v => {
+      const val = v.id || v, lib = v.label || v;
+      return `<option value="${echapper(val)}" ${val === actuel ? "selected" : ""}>${echapper(lib)}</option>`;
+    }).join("");
+
+  let html = `<div class="hero-liste">
+      <div class="eyebrow">Sélection</div>
+      <h2><span class="or-texte">Véhicules sélectionnés</span></h2>
+      <p class="sous">Vendus par des concessions · Accompagnement WoW Car Sourcing</p>
+    </div>
+    <div class="filtres">
+      <select id="filtre-marque" aria-label="Marque">${options(MARQUES, etatCatalogue.marque, "Toutes marques")}</select>
+      <select id="filtre-energie" aria-label="Énergie">${options(ENERGIES, etatCatalogue.energie, "Toutes énergies")}</select>
+      <button class="bouton-contour" id="reset-filtres">Réinitialiser</button>
+    </div>
+    <p class="compte">${liste.length} véhicule(s)</p>
+    <div class="cartes">${visibles.length
+      ? visibles.map(carte).join("")
+      : `<div class="vide">Bientôt disponible : aucune annonce vérifiée pour ces critères.</div>`}</div>`;
+
+  if (pages > 1) {
+    html += `<div class="pagination">` + Array.from({ length: pages }, (_, i) =>
+      `<button data-page="${i + 1}" class="${i + 1 === etatCatalogue.page ? "actif" : ""}">${i + 1}</button>`).join("") + `</div>`;
+  }
+
+  html += `<div class="hero-liste section-marques"><div class="eyebrow">Recherche par marque</div><h2><span class="or-texte">Parcourir par marque</span></h2></div>`;
+  html += marques.length
     ? `<div class="tuiles">` + marques.map(m => {
         const n = ANNONCES.filter(a => a.marque === m).length;
         return `<button class="tuile" data-marque="${echapper(m)}"><span class="nom">${echapper(m)}</span><span class="etat">${n ? n + " annonce(s)" : "Bientôt disponible"}</span></button>`;
@@ -271,9 +699,13 @@ function accueil(filtre) {
   document.getElementById("contenu").innerHTML = html;
 }
 function rendre() {
+  if (etat.vehicule) {
+    document.getElementById("contenu").innerHTML = ficheDetail(etat.vehicule);
+    return;
+  }
   const avecCharge = etat.energie === "electrique" || etat.energie.startsWith("hybride");
   let html = `<button class="retour" id="retour">← Toutes les marques</button>
-    <h2>${echapper(etat.marque)}</h2>
+    <h2><span class="or-texte">${echapper(etat.marque)}</span></h2>
     <div class="onglets">` + ENERGIES.map(e =>
       `<button class="onglet ${e.id === etat.energie ? "actif" : ""}" data-energie="${e.id}">${e.label}</button>`).join("") + `</div>`;
   if (avecCharge) {
@@ -291,14 +723,34 @@ document.getElementById("contenu").addEventListener("click", e => {
   const t = e.target.closest("button");
   if (!t) return;
   if (t.classList.contains("tuile")) {
-    etat.marque = t.dataset.marque; etat.energie = "essence"; etat.charge = "22kw"; rendre();
-  } else if (t.id === "retour") {
+    etat.marque = t.dataset.marque; etat.energie = "essence"; etat.charge = "22kw"; etat.vehicule = null; rendre();
+  } else if (t.classList.contains("bouton-fiche")) {
+    etat.vehicule = ANNONCES[Number(t.dataset.idx)];
+    rendre();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  } else if (t.dataset.page) {
+    etatCatalogue.page = Number(t.dataset.page);
     accueil(document.getElementById("champ").value);
+    document.getElementById("contenu").scrollIntoView({ behavior: "smooth", block: "start" });
+  } else if (t.id === "reset-filtres") {
+    etatCatalogue.marque = ""; etatCatalogue.energie = ""; etatCatalogue.page = 1;
+    accueil(document.getElementById("champ").value);
+  } else if (t.id === "retour-annonces") {
+    etat.vehicule = null; rendre();
+  } else if (t.id === "retour") {
+    etat.vehicule = null; accueil(document.getElementById("champ").value);
   } else if (t.dataset.energie) {
-    etat.energie = t.dataset.energie; rendre();
+    etat.energie = t.dataset.energie; etat.vehicule = null; rendre();
   } else if (t.dataset.charge) {
-    etat.charge = t.dataset.charge; rendre();
+    etat.charge = t.dataset.charge; etat.vehicule = null; rendre();
   }
+});
+
+document.getElementById("contenu").addEventListener("change", e => {
+  if (e.target.id === "filtre-marque") etatCatalogue.marque = e.target.value;
+  if (e.target.id === "filtre-energie") etatCatalogue.energie = e.target.value;
+  etatCatalogue.page = 1;
+  accueil(document.getElementById("champ").value);
 });
 
 document.getElementById("champ").addEventListener("input", e => accueil(e.target.value));
@@ -309,7 +761,7 @@ document.getElementById("recherche").addEventListener("submit", e => {
   accueil(texte);
   const zone = document.getElementById("retour-recherche");
   if (!texte) { zone.innerHTML = ""; return; }
-  zone.innerHTML = `<p class="rappel">Vous recherchez « ${echapper(texte)} » ? Envoyez-nous le modèle, nous lançons la recherche auprès des concessions officielles.</p>
+  zone.innerHTML = `<p class="rappel">Vous recherchez « ${echapper(texte)} » ? Envoyez-nous le modèle, nous lançons la recherche auprès des concessions.</p>
     <div class="zone-whatsapp"><a class="bouton-or" href="${lienWhatsApp("Bonjour, je recherche : " + texte)}" target="_blank" rel="noopener">Envoyer ma recherche sur WhatsApp</a></div>`;
 });
 
