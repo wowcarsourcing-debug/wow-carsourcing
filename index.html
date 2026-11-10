@@ -415,6 +415,22 @@
   .annonce .pied { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-top: auto; padding-top: 14px; border-top: 1px solid rgba(184,134,47,.3); }
   .annonce .prix { font-size: 1.5rem; font-weight: 600; color: var(--or-clair); }
   .annonce .bouton-or { padding: 10px 18px; font-size: .85rem; }
+  .cartes-vitrine { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 26px; max-width: 1200px; margin: 30px auto 0; }
+  .carte-vitrine { border: 1px solid rgba(184,134,47,.5); border-radius: 24px; overflow: hidden; background: #0c0b08; display: flex; flex-direction: column; transition: transform .3s, border-color .3s; }
+  .carte-vitrine:hover { transform: translateY(-4px); border-color: var(--or); }
+  .cv-photo { position: relative; display: block; aspect-ratio: 4 / 3; background: radial-gradient(circle at 50% 40%, #2a2010, #080808 70%); overflow: hidden; }
+  .cv-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .cv-vide { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: #a79f8a; letter-spacing: .14em; text-transform: uppercase; font-size: .8rem; }
+  .cv-tag { position: absolute; top: 14px; left: 14px; background: rgba(0,0,0,.7); border: 1px solid var(--or); color: var(--or-clair); border-radius: 999px; padding: 4px 12px; font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; }
+  .cv-tag.cv-or { left: auto; right: 14px; background: var(--or-metal); color: #120d04; border-color: transparent; font-weight: 700; }
+  .cv-km { position: absolute; bottom: 14px; right: 14px; background: rgba(0,0,0,.8); border: 1px solid var(--or); color: var(--or-clair); border-radius: 999px; padding: 5px 12px; font-size: .85rem; }
+  .cv-corps { padding: 20px 22px 22px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+  .cv-modele { font-size: 1.45rem; font-weight: 600; color: var(--champagne); line-height: 1.2; }
+  .cv-modele .annee { font-size: .9em; font-weight: 400; color: #a79f8a; }
+  .cv-pied { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: auto; padding-top: 16px; border-top: 1px solid rgba(184,134,47,.3); }
+  .cv-prix { font-size: 1.5rem; font-weight: 600; color: var(--or-clair); }
+  .cv-ttc { font-size: .72rem; color: #a79f8a; letter-spacing: .06em; margin-top: 2px; }
+  .cv-pied .bouton-or { padding: 10px 18px; font-size: .85rem; }
   .pagination { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin: 34px 0 10px; }
   .pagination button {
     min-width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--or);
@@ -600,23 +616,7 @@
     <h2 class="titre-liste">Ma sélection <span class="or-texte"><em>coup de cœur</em></span></h2>
     <p class="sous-liste">Sélection exclusive du véhicule disponible immédiatement.</p>
   </div>
-  <div class="vedette-cadre">
-    <article class="annonce vedette">
-      <a class="visuel-mini" href="#fiche-718" aria-label="Voir la fiche de la Porsche 718 Cayman GTS">
-        <img src="porsche-718-1.jpg" alt="Porsche 718 Cayman GTS noire">
-        <span class="coin">Coup de cœur</span>
-      </a>
-      <div class="corps">
-        <div class="marque-petit">Porsche</div>
-        <div class="titre">718 Cayman GTS</div>
-        <div class="puces"><span>Essence</span><span>Automatique</span></div>
-        <div class="pied">
-          <div class="prix">Prix sur demande</div>
-          <a class="bouton-or" href="#fiche-718">Voir la fiche</a>
-        </div>
-      </div>
-    </article>
-  </div>
+  <div class="cartes-vitrine" id="vitrine"></div>
 
   <div class="fiche-718" id="fiche-718">
     <a class="fiche-retour" href="#arrivages-liste">← Retour à la sélection</a>
@@ -708,12 +708,12 @@
     <p class="sous-liste">De la recherche à la remise des clés, je gère chaque étape avec rigueur et transparence.</p>
   </div>
   <div class="grille-services">
-    <div><div class="num-or">01</div><h3>Clé en main</h3><p>Je m'occupe de tout, de la recherche jusqu'à la remise des clés.</p></div>
-    <div><div class="num-or">02</div><h3>Conseil d'achat</h3><p>Je me consacre à découvrir votre personnalité et vos options souhaitées, pour vous guider vers le véhicule qui vous correspond le plus.</p></div>
-    <div><div class="num-or">03</div><h3>Estimation et reprise</h3><p>Estimation et reprise de votre ancien véhicule si vous en achetez un nouveau.</p></div>
-    <div><div class="num-or">04</div><h3>Financement</h3><p>Un partenariat avec une banque professionnelle du Crédit Agricole.</p></div>
-    <div><div class="num-or">05</div><h3>Démarches administratives</h3><p>Je m'occupe de vos démarches, notamment la carte grise.</p></div>
-    <div><div class="num-or">06</div><h3>Livraison</h3><p>Un coût selon la distance, y compris dans l'Union européenne.</p></div>
+    <div><div class="num-or">01</div><h3>Recherche personnalisée</h3><p>Je trouve le véhicule qui correspond à vos souhaits, parmi les annonces vendues par des concessions.</p></div>
+    <div><div class="num-or">02</div><h3>Vérification du véhicule</h3><p>Je vérifie avec vous l'état et l'historique du véhicule auprès de la concession avant toute décision.</p></div>
+    <div><div class="num-or">03</div><h3>Administratif simplifié</h3><p>Je m'occupe de vos démarches, notamment la carte grise.</p></div>
+    <div><div class="num-or">04</div><h3>Financement et reprise</h3><p>Estimation et reprise de votre ancien véhicule, et financement avec un partenaire bancaire.</p></div>
+    <div><div class="num-or">05</div><h3>Conseillère dédiée</h3><p>Votre sérénité, ma priorité : une conseillère dédiée, de la première prise de contact à la remise des clés, sur rendez-vous.</p></div>
+    <div><div class="num-or">06</div><h3>Livraison</h3><p>Selon la distance, y compris dans l'Union européenne, sur devis.</p></div>
   </div>
 </section>
 
@@ -724,10 +724,10 @@
     <p class="sous-liste">Un processus clair, de votre demande jusqu'à la remise des clés.</p>
   </div>
   <div class="grille-etapes">
-    <div><div class="num-or">01</div><h3>Vous décrivez votre recherche</h3><p>Marque, modèle, budget et attentes.</p></div>
-    <div><div class="num-or">02</div><h3>Je cherche auprès des concessions</h3><p>Seules les annonces vendues par des concessions sont retenues.</p></div>
-    <div><div class="num-or">03</div><h3>Vous validez</h3><p>Nous convenons du véhicule et du prix, puis nous signons le mandat.</p></div>
-    <div><div class="num-or">04</div><h3>Démarches et livraison</h3><p>Carte grise, livraison ou remise des clés selon votre choix.</p></div>
+    <div><div class="num-or">01</div><h3>Vous me décrivez votre recherche</h3><p>Marque, modèle, budget et attentes, lors d'un échange sur rendez-vous.</p></div>
+    <div><div class="num-or">02</div><h3>Je chasse auprès des concessions</h3><p>Seules les annonces vendues par des concessions sont retenues, et je vérifie chaque information avec vous.</p></div>
+    <div><div class="num-or">03</div><h3>Vous validez</h3><p>Nous convenons du véhicule et du prix, puis nous signons le mandat de recherche.</p></div>
+    <div><div class="num-or">04</div><h3>Démarches et livraison</h3><p>Carte grise, livraison à domicile ou remise des clés, selon votre choix et la distance.</p></div>
   </div>
 </section>
 
@@ -1114,6 +1114,35 @@ function renderAccueilHaut() {
   document.getElementById("ticker-piste").innerHTML = [...MARQUES, ...MARQUES]
     .map(m => `<span>${echapper(m)}</span><span class="pt">◆</span>`).join("");
 }
+const VITRINE = [
+  { marque:"Porsche", modele:"718 Cayman GTS", annee:null, km:null, carburant:"Essence", boite:"Automatique", prix:null, photo:"porsche-718-1.jpg", coup:true, fiche:"fiche-718" }
+  // Ajouter ici chaque véhicule (photo : nom du fichier .jpg envoyé sur le dépôt ; fiche : null si pas de fiche détaillée)
+];
+function carteVitrine(v) {
+  const cible = v.fiche ? "#" + v.fiche : lienWhatsApp("Bonjour Christelle, je souhaite des informations sur : " + v.marque + " " + v.modele + ".");
+  const ext = v.fiche ? "" : ' target="_blank" rel="noopener"';
+  const media = v.photo
+    ? `<img src="${echapper(v.photo)}" alt="${echapper(v.marque + " " + v.modele)}" loading="lazy">`
+    : `<span class="cv-vide">Photos à venir</span>`;
+  return `<article class="carte-vitrine">
+    <a class="cv-photo" href="${cible}"${ext}>
+      ${media}
+      <span class="cv-tag">Disponible</span>
+      ${v.coup ? `<span class="cv-tag cv-or">Coup de cœur</span>` : ""}
+      ${v.km ? `<span class="cv-km">${formatKm(v.km)}</span>` : ""}
+    </a>
+    <div class="cv-corps">
+      <div class="marque-petit">${echapper(v.marque)}</div>
+      <div class="cv-modele">${echapper(v.modele)}${v.annee ? ` <span class="annee">· ${v.annee}</span>` : ""}</div>
+      <div class="puces"><span>${echapper(v.carburant)}</span><span>${echapper(v.boite)}</span></div>
+      <div class="cv-pied">
+        <div><div class="cv-prix">${v.prix ? formatPrix(v.prix) : "Prix sur demande"}</div><div class="cv-ttc">Véhicule vendu par la concession</div></div>
+        <a class="bouton-or" href="${cible}"${ext}>Voir →</a>
+      </div>
+    </div>
+  </article>`;
+}
+document.getElementById("vitrine").innerHTML = VITRINE.map(carteVitrine).join("");
 renderAccueilHaut();
 document.getElementById("arrivages-liste").addEventListener("click", e => {
   const b = e.target.closest(".bouton-fiche");
@@ -1147,6 +1176,8 @@ accueil("");
 // ---- Traductions : clé = texte français exact, valeur = traduction ----
 const TRAD = {
 en: {
+"Vous me décrivez votre recherche": "You describe your search to me", "Marque, modèle, budget et attentes, lors d'un échange sur rendez-vous.": "Make, model, budget and expectations, during a conversation by appointment.", "Je chasse auprès des concessions": "I hunt for your vehicle among dealerships", "Seules les annonces vendues par des concessions sont retenues, et je vérifie chaque information avec vous.": "Only listings sold by dealerships are kept, and I check every detail with you.", "Nous convenons du véhicule et du prix, puis nous signons le mandat de recherche.": "We agree on the vehicle and the price, then we sign the search mandate.", "Carte grise, livraison à domicile ou remise des clés, selon votre choix et la distance.": "Registration, home delivery or key handover, depending on your choice and the distance.", "Votre sérénité, ma priorité : une conseillère dédiée, de la première prise de contact à la remise des clés, sur rendez-vous.": "Your peace of mind, my priority: a dedicated advisor, from first contact to handover of the keys, by appointment.",
+"Recherche personnalisée": "Personalised search", "Je trouve le véhicule qui correspond à vos souhaits, parmi les annonces vendues par des concessions.": "I find the vehicle that matches your wishes, among listings sold by dealerships.", "Vérification du véhicule": "Vehicle check", "Je vérifie avec vous l'état et l'historique du véhicule auprès de la concession avant toute décision.": "Before any decision, I check the condition and history of the vehicle with the dealership, together with you.", "Administratif simplifié": "Simplified paperwork", "Je m'occupe de vos démarches, notamment la carte grise.": "I take care of your paperwork, including the registration certificate.", "Financement et reprise": "Financing and trade-in", "Estimation et reprise de votre ancien véhicule, et financement avec un partenaire bancaire.": "Valuation and trade-in of your current vehicle, and financing with a banking partner.", "Conseillère dédiée": "Dedicated advisor", "Une conseillère dédiée, de la première prise de contact à la remise des clés, sur rendez-vous.": "A dedicated advisor, from first contact to handover of the keys, by appointment.", "Selon la distance, y compris dans l'Union européenne, sur devis.": "Depending on distance, including within the European Union, on quote.", "Disponible": "Available", "Véhicule vendu par la concession": "Sold by the dealership",
 "Sourcing de véhicules auprès des concessions · Accompagnement de la recherche à la remise des clés": "Vehicle sourcing through dealerships · Support from search to handover of the keys",
 "Disponible sur rendez-vous": "Available by appointment",
 "Accueil": "Home", "Véhicules": "Vehicles", "Pourquoi nous": "Why us", "Prestations": "Services", "Recherche": "Search", "Contact": "Contact",
@@ -1200,6 +1231,8 @@ en: {
 "Voir l'annonce chez la concession": "View the listing at the dealership", "Prix indicatif": "Indicative price"
 },
 de: {
+"Vous me décrivez votre recherche": "Sie beschreiben mir Ihre Suche", "Marque, modèle, budget et attentes, lors d'un échange sur rendez-vous.": "Marke, Modell, Budget und Erwartungen, in einem Gespräch nach Terminvereinbarung.", "Je chasse auprès des concessions": "Ich suche Ihr Fahrzeug bei den Autohäusern", "Seules les annonces vendues par des concessions sont retenues, et je vérifie chaque information avec vous.": "Nur Angebote von Autohäusern werden berücksichtigt, und ich prüfe jede Angabe gemeinsam mit Ihnen.", "Nous convenons du véhicule et du prix, puis nous signons le mandat de recherche.": "Wir einigen uns auf Fahrzeug und Preis, dann unterzeichnen wir den Suchauftrag.", "Carte grise, livraison à domicile ou remise des clés, selon votre choix et la distance.": "Zulassung, Lieferung nach Hause oder Schlüsselübergabe, je nach Wahl und Entfernung.", "Votre sérénité, ma priorité : une conseillère dédiée, de la première prise de contact à la remise des clés, sur rendez-vous.": "Ihre Gelassenheit, meine Priorität: eine persönliche Beraterin, vom ersten Kontakt bis zur Schlüsselübergabe, nach Terminvereinbarung.",
+"Recherche personnalisée": "Persönliche Suche", "Je trouve le véhicule qui correspond à vos souhaits, parmi les annonces vendues par des concessions.": "Ich finde das Fahrzeug, das Ihren Wünschen entspricht, unter den Angeboten der Autohäuser.", "Vérification du véhicule": "Fahrzeugprüfung", "Je vérifie avec vous l'état et l'historique du véhicule auprès de la concession avant toute décision.": "Vor jeder Entscheidung prüfe ich mit Ihnen gemeinsam Zustand und Historie des Fahrzeugs beim Autohaus.", "Administratif simplifié": "Vereinfachte Formalitäten", "Je m'occupe de vos démarches, notamment la carte grise.": "Ich kümmere mich um Ihre Formalitäten, insbesondere die Zulassung.", "Financement et reprise": "Finanzierung und Inzahlungnahme", "Estimation et reprise de votre ancien véhicule, et financement avec un partenaire bancaire.": "Bewertung und Inzahlungnahme Ihres alten Fahrzeugs sowie Finanzierung mit einem Bankpartner.", "Conseillère dédiée": "Persönliche Beraterin", "Une conseillère dédiée, de la première prise de contact à la remise des clés, sur rendez-vous.": "Eine persönliche Beraterin, vom ersten Kontakt bis zur Schlüsselübergabe, nach Terminvereinbarung.", "Selon la distance, y compris dans l'Union européenne, sur devis.": "Je nach Entfernung, auch innerhalb der Europäischen Union, auf Angebot.", "Disponible": "Verfügbar", "Véhicule vendu par la concession": "Verkauft vom Autohaus",
 "Sourcing de véhicules auprès des concessions · Accompagnement de la recherche à la remise des clés": "Fahrzeugbeschaffung über Autohäuser · Begleitung von der Suche bis zur Schlüsselübergabe",
 "Disponible sur rendez-vous": "Auf Termin erreichbar",
 "Accueil": "Startseite", "Véhicules": "Fahrzeuge", "Pourquoi nous": "Warum wir", "Prestations": "Leistungen", "Recherche": "Suche", "Contact": "Kontakt",
@@ -1253,6 +1286,8 @@ de: {
 "Voir l'annonce chez la concession": "Angebot beim Autohaus ansehen", "Prix indicatif": "Richtpreis"
 },
 ru: {
+"Vous me décrivez votre recherche": "Вы описываете мне ваш запрос", "Marque, modèle, budget et attentes, lors d'un échange sur rendez-vous.": "Марка, модель, бюджет и пожелания — в беседе по записи.", "Je chasse auprès des concessions": "Я ищу ваш автомобиль у дилеров", "Seules les annonces vendues par des concessions sont retenues, et je vérifie chaque information avec vous.": "Учитываются только объявления дилеров, и каждую деталь я проверяю вместе с вами.", "Nous convenons du véhicule et du prix, puis nous signons le mandat de recherche.": "Мы согласуем автомобиль и цену, затем подписываем мандат на поиск.", "Carte grise, livraison à domicile ou remise des clés, selon votre choix et la distance.": "Регистрация, доставка на дом или передача ключей — по вашему выбору и с учётом расстояния.", "Votre sérénité, ma priorité : une conseillère dédiée, de la première prise de contact à la remise des clés, sur rendez-vous.": "Ваше спокойствие — мой приоритет: персональный консультант от первого контакта до передачи ключей, по записи.",
+"Recherche personnalisée": "Индивидуальный поиск", "Je trouve le véhicule qui correspond à vos souhaits, parmi les annonces vendues par des concessions.": "Я нахожу автомобиль, который соответствует вашим пожеланиям, среди объявлений дилерских центров.", "Vérification du véhicule": "Проверка автомобиля", "Je vérifie avec vous l'état et l'historique du véhicule auprès de la concession avant toute décision.": "Прежде чем вы примете решение, я вместе с вами проверяю состояние и историю автомобиля у дилера.", "Administratif simplifié": "Упрощённое оформление", "Je m'occupe de vos démarches, notamment la carte grise.": "Я беру на себя ваши документы, в том числе регистрацию (carte grise).", "Financement et reprise": "Финансирование и трейд-ин", "Estimation et reprise de votre ancien véhicule, et financement avec un partenaire bancaire.": "Оценка и приём вашего автомобиля в трейд-ин, а также финансирование с банком-партнёром.", "Conseillère dédiée": "Персональный консультант", "Une conseillère dédiée, de la première prise de contact à la remise des clés, sur rendez-vous.": "Персональный консультант — от первого контакта до передачи ключей, по записи.", "Selon la distance, y compris dans l'Union européenne, sur devis.": "В зависимости от расстояния, в том числе по всему ЕС, по запросу стоимости.", "Disponible": "В наличии", "Véhicule vendu par la concession": "Продаётся дилером",
 "Sourcing de véhicules auprès des concessions · Accompagnement de la recherche à la remise des clés": "Подбор автомобилей через автосалоны · Сопровождение от поиска до передачи ключей",
 "Disponible sur rendez-vous": "Доступна по записи",
 "Accueil": "Главная", "Véhicules": "Автомобили", "Pourquoi nous": "Почему мы", "Prestations": "Услуги", "Recherche": "Поиск", "Contact": "Контакты",
@@ -1306,6 +1341,8 @@ ru: {
 "Voir l'annonce chez la concession": "Смотреть объявление в автосалоне", "Prix indicatif": "Ориентировочная цена"
 },
 uk: {
+"Vous me décrivez votre recherche": "Ви описуєте мені ваш запит", "Marque, modèle, budget et attentes, lors d'un échange sur rendez-vous.": "Марка, модель, бюджет і побажання — у розмові за домовленістю.", "Je chasse auprès des concessions": "Я шукаю ваш автомобіль у автосалонах", "Seules les annonces vendues par des concessions sont retenues, et je vérifie chaque information avec vous.": "Враховуються лише оголошення автосалонів, і кожну деталь я перевіряю разом із вами.", "Nous convenons du véhicule et du prix, puis nous signons le mandat de recherche.": "Ми узгоджуємо автомобіль і ціну, потім підписуємо мандат на пошук.", "Carte grise, livraison à domicile ou remise des clés, selon votre choix et la distance.": "Реєстрація, доставка додому або передача ключів — за вашим вибором і з урахуванням відстані.", "Votre sérénité, ma priorité : une conseillère dédiée, de la première prise de contact à la remise des clés, sur rendez-vous.": "Ваш спокій — мій пріоритет: персональна консультантка від першого контакту до передачі ключів, за домовленістю.",
+"Recherche personnalisée": "Індивідуальний пошук", "Je trouve le véhicule qui correspond à vos souhaits, parmi les annonces vendues par des concessions.": "Я знаходжу автомобіль, що відповідає вашим побажанням, серед оголошень автосалонів.", "Vérification du véhicule": "Перевірка автомобіля", "Je vérifie avec vous l'état et l'historique du véhicule auprès de la concession avant toute décision.": "Перед будь-яким рішенням я разом із вами перевіряю стан і історію автомобіля в автосалоні.", "Administratif simplifié": "Спрощене оформлення", "Je m'occupe de vos démarches, notamment la carte grise.": "Я беру на себе ваші документи, зокрема реєстрацію (carte grise).", "Financement et reprise": "Фінансування та трейд-ін", "Estimation et reprise de votre ancien véhicule, et financement avec un partenaire bancaire.": "Оцінка та прийом вашого автомобіля в трейд-ін, а також фінансування з банком-партнером.", "Conseillère dédiée": "Персональна консультантка", "Une conseillère dédiée, de la première prise de contact à la remise des clés, sur rendez-vous.": "Персональна консультантка — від першого контакту до передачі ключів, за домовленістю.", "Selon la distance, y compris dans l'Union européenne, sur devis.": "Залежно від відстані, зокрема по всьому ЄС, за запитом.", "Disponible": "В наявності", "Véhicule vendu par la concession": "Продається автосалоном",
 "Sourcing de véhicules auprès des concessions · Accompagnement de la recherche à la remise des clés": "Підбір автомобілів через автосалони · Супровід від пошуку до передачі ключів",
 "Disponible sur rendez-vous": "Доступна за домовленістю",
 "Accueil": "Головна", "Véhicules": "Автомобілі", "Pourquoi nous": "Чому ми", "Prestations": "Послуги", "Recherche": "Пошук", "Contact": "Контакти",
@@ -1359,6 +1396,8 @@ uk: {
 "Voir l'annonce chez la concession": "Дивитися оголошення в автосалоні", "Prix indicatif": "Орієнтовна ціна"
 },
 it: {
+"Vous me décrivez votre recherche": "Mi descrivete la vostra ricerca", "Marque, modèle, budget et attentes, lors d'un échange sur rendez-vous.": "Marca, modello, budget e aspettative, durante un colloquio su appuntamento.", "Je chasse auprès des concessions": "Cerco il vostro veicolo presso le concessionarie", "Seules les annonces vendues par des concessions sont retenues, et je vérifie chaque information avec vous.": "Sono considerate solo le inserzioni delle concessionarie, e ogni informazione la verifico con voi.", "Nous convenons du véhicule et du prix, puis nous signons le mandat de recherche.": "Concordiamo il veicolo e il prezzo, poi firmiamo il mandato di ricerca.", "Carte grise, livraison à domicile ou remise des clés, selon votre choix et la distance.": "Carta grigia, consegna a domicilio o consegna delle chiavi, in base alla vostra scelta e alla distanza.", "Votre sérénité, ma priorité : une conseillère dédiée, de la première prise de contact à la remise des clés, sur rendez-vous.": "La vostra serenità, la mia priorità: una consulente dedicata, dal primo contatto alla consegna delle chiavi, su appuntamento.",
+"Recherche personnalisée": "Ricerca personalizzata", "Je trouve le véhicule qui correspond à vos souhaits, parmi les annonces vendues par des concessions.": "Trovo il veicolo che corrisponde ai vostri desideri, tra le inserzioni vendute dalle concessionarie.", "Vérification du véhicule": "Verifica del veicolo", "Je vérifie avec vous l'état et l'historique du véhicule auprès de la concession avant toute décision.": "Prima di ogni decisione verifico con voi lo stato e la storia del veicolo presso la concessionaria.", "Administratif simplifié": "Pratiche semplificate", "Je m'occupe de vos démarches, notamment la carte grise.": "Mi occupo delle vostre pratiche, compresa la carta grigia (carte grise).", "Financement et reprise": "Finanziamento e permuta", "Estimation et reprise de votre ancien véhicule, et financement avec un partenaire bancaire.": "Stima e permuta del vostro veicolo attuale, e finanziamento con un partner bancario.", "Conseillère dédiée": "Consulente dedicata", "Une conseillère dédiée, de la première prise de contact à la remise des clés, sur rendez-vous.": "Una consulente dedicata, dal primo contatto alla consegna delle chiavi, su appuntamento.", "Selon la distance, y compris dans l'Union européenne, sur devis.": "In base alla distanza, anche nell'Unione europea, su preventivo.", "Disponible": "Disponibile", "Véhicule vendu par la concession": "Venduta dalla concessionaria",
 "Sourcing de véhicules auprès des concessions · Accompagnement de la recherche à la remise des clés": "Sourcing di veicoli presso le concessionarie · Accompagnamento dalla ricerca alla consegna delle chiavi",
 "Disponible sur rendez-vous": "Disponibile su appuntamento",
 "Accueil": "Home", "Véhicules": "Veicoli", "Pourquoi nous": "Perché noi", "Prestations": "Servizi", "Recherche": "Ricerca", "Contact": "Contatti",
