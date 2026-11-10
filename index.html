@@ -249,6 +249,9 @@
   .annonce.vedette .visuel-mini { aspect-ratio: 4 / 3; }
   .annonce.vedette .titre { font-size: 1.7rem; }
   .annonce.vedette .prix { font-size: 1.1rem; font-style: italic; }
+  .langues { display: inline-flex; gap: 4px; margin-left: 14px; }
+  .langues button { background: transparent; border: 1px solid var(--or); color: var(--or-clair); border-radius: 999px; padding: 2px 9px; font-size: .72rem; letter-spacing: .08em; cursor: pointer; font-family: inherit; }
+  .langues button.actif, .langues button:hover { background: var(--or-metal); color: #120d04; border-color: transparent; }
   .rond-flottant { position: fixed; right: 20px; bottom: 20px; width: 60px; height: 60px; z-index: 60; box-shadow: 0 6px 18px rgba(0,0,0,.6); }
   .rond-flottant svg { width: 28px; height: 28px; }
   .hero-texte p { font-size: 1.15rem; line-height: 1.7; color: var(--champagne); margin: 0 0 28px; max-width: 520px; }
@@ -524,8 +527,16 @@
 
 <div class="bandeau" id="top">Sourcing de véhicules auprès des concessions · Accompagnement de la recherche à la remise des clés</div>
 <div class="infos">
-  <span>Disponible à tout moment sur rendez-vous</span>
+  <span>Disponible sur rendez-vous</span>
   <span><a href="tel:+33769276261">+33 7 69 27 62 61</a></span>
+  <div class="langues" id="langues">
+    <button type="button" data-lang="fr" class="actif">FR</button>
+    <button type="button" data-lang="en">EN</button>
+    <button type="button" data-lang="de">DE</button>
+    <button type="button" data-lang="ru">RU</button>
+    <button type="button" data-lang="uk">UA</button>
+    <button type="button" data-lang="it">IT</button>
+  </div>
 </div>
 <nav class="navbar">
   <a class="nav-logo" href="#top"><img src="logo.png" alt=""><span>WoW Car Sourcing</span></a>
@@ -552,15 +563,12 @@
   <p class="signature">Christelle, votre partenaire de Confiance</p>
   <div class="contact" id="contact">
     <div class="ronds">
-      <a class="rond" href="tel:+33769276261" aria-label="Appeler">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-      </a>
-      <a class="rond" href="https://wa.me/33769276261" target="_blank" rel="noopener" aria-label="Envoyer un message WhatsApp">
+      <a class="rond" href="https://wa.me/33769276261" target="_blank" rel="noopener" aria-label="Parler à Votre Conseillère, Christelle">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.5 7.5L3 21l2-5.4A8.5 8.5 0 1 1 21 11.5z"/></svg>
       </a>
     </div>
-    <div class="ronds-legende"><span>Appeler</span><span>WhatsApp</span></div>
-    <p class="dispo">Disponible à tout moment pour échanger sur rendez-vous, comme je suis chauffeure VTC.</p>
+    <div class="ronds-legende"><span>WhatsApp</span></div>
+    <p class="dispo">Disponible sur rendez-vous, selon mes horaires de chauffeure VTC.</p>
     <p class="num"><span class="or-texte">+33 7 69 27 62 61</span></p>
   </div>
 </header>
@@ -572,7 +580,7 @@
     <p>WoW Car Sourcing vous accompagne dans la recherche de votre véhicule, auprès des Concessions. Sélection, conseil d'achat, démarches et livraison : je m'occupe de tout.</p>
     <div class="hero-boutons">
       <a class="bouton-or" href="#contenu">Voir les véhicules</a>
-      <a class="bouton-contour" href="https://wa.me/33769276261" target="_blank" rel="noopener">Parler à Christelle</a>
+      <a class="bouton-contour" href="https://wa.me/33769276261" target="_blank" rel="noopener">Parler à Votre Conseillère, Christelle</a>
     </div>
   </div>
   <div class="hero-photo" role="img" aria-label="Voiture de sport"></div>
@@ -581,7 +589,7 @@
 <div class="bande-or">
   <div><strong>Concession</strong><span>Véhicules vendus par des concessions</span></div>
   <div><strong>Clé en main</strong><span>De la recherche à la remise des clés</span></div>
-  <div><strong>Conseil d'achat</strong><span>Un véhicule choisi selon votre personnalité et vos options</span></div>
+  <div><strong>Conseil d'achat</strong><span>Un véhicule choisi selon vos besoins et vos options</span></div>
   <div><strong>Livraison UE</strong><span>Selon la distance, sur devis</span></div>
 </div>
 
@@ -635,8 +643,8 @@
         <p class="petit">Je vous communique le prix et les conditions de livraison sur simple demande.</p>
         <div class="actions">
           <a class="bouton-or" href="https://wa.me/33769276261?text=Bonjour%20Christelle%2C%20je%20souhaite%20r%C3%A9server%20la%20Porsche%20718%20Cayman%20GTS." target="_blank" rel="noopener">Réserver ce véhicule</a>
-          <a class="bouton-whatsapp-vert" href="https://wa.me/33769276261?text=Bonjour%20Christelle%2C%20je%20souhaite%20des%20informations%20sur%20la%20Porsche%20718%20Cayman%20GTS." target="_blank" rel="noopener">Discuter sur WhatsApp</a>
-          <a class="bouton-contour" href="tel:+33769276261">Appeler Christelle</a>
+          <a class="bouton-whatsapp-vert" href="https://wa.me/33769276261?text=Bonjour%20Christelle%2C%20je%20souhaite%20des%20informations%20sur%20la%20Porsche%20718%20Cayman%20GTS." target="_blank" rel="noopener">Parler à Votre Conseillère, Christelle</a>
+          <a class="bouton-contour" href="tel:+33769276261">Parler à Votre Conseillère, Christelle</a>
         </div>
       </aside>
     </div>
@@ -752,8 +760,8 @@
       <p>Contactez-moi dès aujourd'hui pour échanger sur votre recherche.</p>
     </div>
     <div class="cta-boutons">
-      <a class="bouton-sombre" href="tel:+33769276261">Nous appeler</a>
-      <a class="bouton-whatsapp-vert" href="https://wa.me/33769276261" target="_blank" rel="noopener">WhatsApp direct</a>
+      <a class="bouton-sombre" href="tel:+33769276261">Parler à Votre Conseillère, Christelle</a>
+      <a class="bouton-whatsapp-vert" href="https://wa.me/33769276261" target="_blank" rel="noopener">Parler à Votre Conseillère, Christelle</a>
     </div>
   </div>
 </section>
@@ -785,7 +793,7 @@
       <h4>Contact</h4>
       <a href="tel:+33769276261">+33 7 69 27 62 61</a>
       <a href="https://wa.me/33769276261" target="_blank" rel="noopener">WhatsApp</a>
-      <span class="ligne">Disponible à tout moment sur rendez-vous</span>
+      <span class="ligne">Disponible sur rendez-vous</span>
     </div>
   </div>
   <div class="pied-bas">© 2026 WoW Car Sourcing · [Raison sociale, SIREN et adresse à compléter]</div>
@@ -958,7 +966,7 @@ function ficheDetail(a) {
       </div>
       <div class="actions">
         <a class="bouton-or pleine" href="${lienWhatsApp(messageReservation(a))}" target="_blank" rel="noopener">Réserver ce véhicule</a>
-        <a class="bouton-contour pleine" href="${lienWhatsApp("Bonjour Christelle, j'aimerais des informations sur : " + a.marque + " " + a.modele + ".")}" target="_blank" rel="noopener">Contacter sur WhatsApp</a>
+        <a class="bouton-contour pleine" href="${lienWhatsApp("Bonjour Christelle, j'aimerais des informations sur : " + a.marque + " " + a.modele + ".")}" target="_blank" rel="noopener">Parler à Votre Conseillère, Christelle</a>
       </div>
     </aside>
   </div>`;
@@ -1124,7 +1132,7 @@ document.getElementById("marques-grille").addEventListener("click", e => {
 
 accueil("");
 </script>
-  <a class="rond-mini rond-flottant" href="https://wa.me/33769276261" target="_blank" rel="noopener" aria-label="Discuter sur WhatsApp">
+  <a class="rond-mini rond-flottant" href="https://wa.me/33769276261" target="_blank" rel="noopener" aria-label="Parler à Votre Conseillère, Christelle">
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.5 7.5L3 21l2-5.4A8.5 8.5 0 1 1 21 11.5z"/></svg>
   </a>
 <script>
@@ -1134,6 +1142,330 @@ accueil("");
       document.querySelectorAll('.miniature').forEach(function (x) { x.classList.toggle('actif', x === b); });
     });
   });
+</script>
+<script>
+// ---- Traductions : clé = texte français exact, valeur = traduction ----
+const TRAD = {
+en: {
+"Sourcing de véhicules auprès des concessions · Accompagnement de la recherche à la remise des clés": "Vehicle sourcing through dealerships · Support from search to handover of the keys",
+"Disponible sur rendez-vous": "Available by appointment",
+"Accueil": "Home", "Véhicules": "Vehicles", "Pourquoi nous": "Why us", "Prestations": "Services", "Recherche": "Search", "Contact": "Contact",
+"Voir les véhicules": "View vehicles",
+"Christelle, votre partenaire de Confiance": "Christelle, your trusted partner",
+"Appeler": "Call", "Disponible sur rendez-vous, selon mes horaires de chauffeure VTC.": "Available by appointment, around my schedule as a private hire driver.",
+"Sourcing automobile · Auprès des concessions": "Car sourcing · Through dealerships",
+"Chaque voiture a son histoire.": "Every car has its story.", "Trouvons la vôtre.": "Let's find yours.",
+"WoW Car Sourcing vous accompagne dans la recherche de votre véhicule, auprès des Concessions. Sélection, conseil d'achat, démarches et livraison : je m'occupe de tout.": "WoW Car Sourcing supports you in finding your vehicle through dealerships. Selection, buying advice, paperwork and delivery: I take care of everything.",
+"Parler à Votre Conseillère, Christelle": "Speak to your advisor, Christelle",
+"Concession": "Dealership", "Véhicules vendus par des concessions": "Vehicles sold by dealerships",
+"Clé en main": "Turnkey", "De la recherche à la remise des clés": "From search to handover of the keys",
+"Conseil d'achat": "Buying advice", "Un véhicule choisi selon vos besoins et vos options": "A vehicle chosen to match your needs and options",
+"Livraison UE": "EU delivery", "Selon la distance, sur devis": "Depending on distance, on quote",
+"Ma sélection": "My selection", "coup de cœur": "favourites", "Sélection exclusive du véhicule disponible immédiatement.": "Exclusive selection, available immediately.",
+"Coup de cœur": "Favourite", "Voir la fiche": "View details", "Prix sur demande": "Price on request",
+"Essence": "Petrol", "Automatique": "Automatic", "Réserver ce véhicule": "Reserve this vehicle", "Parler à Votre Conseillère, Christelle": "Speak to your advisor, Christelle", "Parler à Votre Conseillère, Christelle": "Speak to your advisor, Christelle",
+"← Retour à la sélection": "← Back to selection", "Porsche · Occasion · Disponible": "Porsche · Used · Available",
+"Prix": "Price", "Je vous communique le prix et les conditions de livraison sur simple demande.": "I will send you the price and delivery terms on request.",
+"Caractéristiques": "Specifications", "Marque": "Make", "Modèle": "Model", "Carrosserie": "Body", "Coupé": "Coupé", "Carburant": "Fuel", "Boîte": "Gearbox", "Automatique (PDK)": "Automatic (PDK)", "Couleur": "Colour", "Noir": "Black",
+"Description": "Description",
+"Une Porsche 718 Cayman GTS noire, coupé sportif à boîte automatique PDK. Véhicule vendu par une concession et sélectionné par WoW Car Sourcing selon votre profil.": "A black Porsche 718 Cayman GTS, sports coupé with PDK automatic gearbox. Vehicle sold by a dealership and selected by WoW Car Sourcing according to your profile.",
+"Je vous accompagne de la réservation à la remise des clés : démarches, carte grise et livraison selon votre choix.": "I support you from booking to handover of the keys: paperwork, registration certificate and delivery as you choose.",
+"Votre recherche par marque": "Search by make", "Votre": "Your", "marque": "make", "Cliquez sur une marque pour voir sa page dédiée.": "Click on a make to see its dedicated page.",
+"Voir tous les véhicules": "View all vehicles",
+"Pourquoi WoW Car Sourcing ?": "Why WoW Car Sourcing?",
+"J'ai créé WoW Car Sourcing pour vous accompagner dans l'achat de votre véhicule, de la première recherche à la remise des clés. Je me consacre à découvrir vos souhaits, pour être au plus proche de vos attentes et des options désirées, dans une recherche sur mesure.": "I created WoW Car Sourcing to support you in buying your vehicle, from the first search to handover of the keys. I take the time to understand your wishes, so that I stay as close as possible to your expectations and desired options, in a tailor-made search.",
+"Rechercher": "Search", "Indiquez le modèle recherché (ex. Porsche 911 GT3)": "Enter the model you are looking for (e.g. Porsche 911 GT3)",
+"Tous les véhicules présentés sur ce site ne sont pas stockés par mes soins : ils sont en concession automobile. Seules les annonces vendues par une concession figurent ici. Les prix et kilométrages sont donnés à titre indicatif et doivent être reconfirmés auprès de la concession. Le malus est à calculer avant tout engagement pour les véhicules de moins de 6 000 km.": "All vehicles presented on this site are not stocked by me: they are at dealerships. Only listings sold by a dealership appear here. Prices and mileage are indicative and must be reconfirmed with the dealership. The malus tax must be calculated before any commitment for vehicles with less than 6,000 km.",
+"Une solution": "A turnkey", "clé en main": "solution", "De la recherche à la remise des clés, je gère chaque étape avec rigueur et transparence.": "From search to handover of the keys, I manage each step with rigour and transparency.",
+"Je m'occupe de tout, de la recherche jusqu'à la remise des clés.": "I take care of everything, from the search to the handover of the keys.",
+"Je me consacre à découvrir votre personnalité et vos options souhaitées, pour vous guider vers le véhicule qui vous correspond le plus.": "I take the time to discover your personality and desired options, to guide you to the vehicle that suits you best.",
+"Estimation et reprise": "Valuation and trade-in", "Estimation et reprise de votre ancien véhicule si vous en achetez un nouveau.": "Valuation and trade-in of your current vehicle if you buy a new one.",
+"Financement": "Financing", "Un partenariat avec une banque professionnelle du Crédit Agricole.": "A partnership with a professional bank, Crédit Agricole.",
+"Démarches administratives": "Administrative formalities", "Je m'occupe de vos démarches, notamment la carte grise.": "I handle your paperwork, including the registration certificate.",
+"Livraison": "Delivery", "Un coût selon la distance, y compris dans l'Union européenne.": "A cost depending on distance, including within the European Union.",
+"Comment ça marche": "How it works", "En 4 étapes": "In 4", "simples": "simple steps", "Un processus clair, de votre demande jusqu'à la remise des clés.": "A clear process, from your request to the handover of the keys.",
+"Vous décrivez votre recherche": "You describe your search", "Marque, modèle, budget et attentes.": "Make, model, budget and expectations.",
+"Je cherche auprès des concessions": "I search through dealerships", "Seules les annonces vendues par des concessions sont retenues.": "Only listings sold by dealerships are selected.",
+"Vous validez": "You approve", "Nous convenons du véhicule et du prix, puis nous signons le mandat.": "We agree on the vehicle and the price, then we sign the mandate.",
+"Démarches et livraison": "Paperwork and delivery", "Carte grise, livraison ou remise des clés selon votre choix.": "Registration certificate, delivery or handover of the keys, as you choose.",
+"Avis clients": "Customer reviews", "Ce que disent": "What my", "mes clients": "clients say", "Je ne publie que des avis réels, avec l'accord de leurs auteurs.": "I only publish genuine reviews, with the agreement of their authors.",
+"Aucun avis publié pour le moment. Vous avez travaillé avec moi ? Votre témoignage m'aide beaucoup.": "No review published yet. Have you worked with me? Your testimony helps me a lot.",
+"Laisser un avis": "Leave a review", "Nos partenaires": "Our partners", "Un financement de": "Financing you can", "confiance": "trust",
+"Un partenariat avec une banque professionnelle pour le financement de votre véhicule.": "A partnership with a professional bank for financing your vehicle.",
+"Trouvons votre prochain": "Let's find your next", "véhicule ensemble": "vehicle together", "Contactez-moi dès aujourd'hui pour échanger sur votre recherche.": "Contact me today to discuss your search.",
+"Parler à Votre Conseillère, Christelle": "Speak to your advisor, Christelle", "Parler à Votre Conseillère, Christelle": "Speak to your advisor, Christelle",
+"Sourcing de véhicules auprès des concessions. Accompagnement de la recherche à la remise des clés.": "Vehicle sourcing through dealerships. Support from search to handover of the keys.",
+"Navigation": "Navigation", "Services": "Services", "Démarches": "Paperwork",
+"Voir →": "View →", "Photos à venir": "Photos coming soon", "← Retour aux annonces": "← Back to listings", "Mon accompagnement": "My support",
+"Voir l'annonce chez la concession": "View the listing at the dealership", "Prix indicatif": "Indicative price"
+},
+de: {
+"Sourcing de véhicules auprès des concessions · Accompagnement de la recherche à la remise des clés": "Fahrzeugbeschaffung über Autohäuser · Begleitung von der Suche bis zur Schlüsselübergabe",
+"Disponible sur rendez-vous": "Auf Termin erreichbar",
+"Accueil": "Startseite", "Véhicules": "Fahrzeuge", "Pourquoi nous": "Warum wir", "Prestations": "Leistungen", "Recherche": "Suche", "Contact": "Kontakt",
+"Voir les véhicules": "Fahrzeuge ansehen",
+"Christelle, votre partenaire de Confiance": "Christelle, Ihr vertrauensvoller Partner",
+"Appeler": "Anrufen", "Disponible sur rendez-vous, selon mes horaires de chauffeure VTC.": "Auf Termin erreichbar, abgestimmt auf meine Zeiten als VTC-Fahrerin.",
+"Sourcing automobile · Auprès des concessions": "Fahrzeugbeschaffung · Über Autohäuser",
+"Chaque voiture a son histoire.": "Jedes Auto hat seine Geschichte.", "Trouvons la vôtre.": "Finden wir Ihre.",
+"WoW Car Sourcing vous accompagne dans la recherche de votre véhicule, auprès des Concessions. Sélection, conseil d'achat, démarches et livraison : je m'occupe de tout.": "WoW Car Sourcing begleitet Sie bei der Suche nach Ihrem Fahrzeug über Autohäuser. Auswahl, Kaufberatung, Formalitäten und Lieferung: Ich kümmere mich um alles.",
+"Parler à Votre Conseillère, Christelle": "Mit Ihrer Beraterin Christelle sprechen",
+"Concession": "Autohaus", "Véhicules vendus par des concessions": "Fahrzeuge von Autohäusern verkauft",
+"Clé en main": "Schlüsselfertig", "De la recherche à la remise des clés": "Von der Suche bis zur Schlüsselübergabe",
+"Conseil d'achat": "Kaufberatung", "Un véhicule choisi selon vos besoins et vos options": "Ein Fahrzeug, passend zu Ihren Bedürfnissen und Optionen",
+"Livraison UE": "Lieferung EU", "Selon la distance, sur devis": "Je nach Entfernung, auf Angebot",
+"Ma sélection": "Meine Auswahl", "coup de cœur": "Herzensstücke", "Sélection exclusive du véhicule disponible immédiatement.": "Exklusive Auswahl, sofort verfügbar.",
+"Coup de cœur": "Herzensstück", "Voir la fiche": "Details ansehen", "Prix sur demande": "Preis auf Anfrage",
+"Essence": "Benzin", "Automatique": "Automatik", "Réserver ce véhicule": "Dieses Fahrzeug reservieren", "Parler à Votre Conseillère, Christelle": "Mit Ihrer Beraterin Christelle sprechen", "Parler à Votre Conseillère, Christelle": "Mit Ihrer Beraterin Christelle sprechen",
+"← Retour à la sélection": "← Zurück zur Auswahl", "Porsche · Occasion · Disponible": "Porsche · Gebraucht · Verfügbar",
+"Prix": "Preis", "Je vous communique le prix et les conditions de livraison sur simple demande.": "Preis und Lieferbedingungen sende ich Ihnen auf Anfrage.",
+"Caractéristiques": "Technische Daten", "Marque": "Marke", "Modèle": "Modell", "Carrosserie": "Karosserie", "Coupé": "Coupé", "Carburant": "Kraftstoff", "Boîte": "Getriebe", "Automatique (PDK)": "Automatik (PDK)", "Couleur": "Farbe", "Noir": "Schwarz",
+"Description": "Beschreibung",
+"Une Porsche 718 Cayman GTS noire, coupé sportif à boîte automatique PDK. Véhicule vendu par une concession et sélectionné par WoW Car Sourcing selon votre profil.": "Ein schwarzer Porsche 718 Cayman GTS, sportliches Coupé mit PDK-Automatik. Fahrzeug von einem Autohaus verkauft und von WoW Car Sourcing nach Ihrem Profil ausgewählt.",
+"Je vous accompagne de la réservation à la remise des clés : démarches, carte grise et livraison selon votre choix.": "Ich begleite Sie von der Reservierung bis zur Schlüsselübergabe: Formalitäten, Zulassung und Lieferung nach Ihrer Wahl.",
+"Votre recherche par marque": "Suche nach Marke", "Votre": "Ihre", "marque": "Marke", "Cliquez sur une marque pour voir sa page dédiée.": "Klicken Sie auf eine Marke, um die zugehörige Seite zu sehen.",
+"Voir tous les véhicules": "Alle Fahrzeuge ansehen",
+"Pourquoi WoW Car Sourcing ?": "Warum WoW Car Sourcing?",
+"J'ai créé WoW Car Sourcing pour vous accompagner dans l'achat de votre véhicule, de la première recherche à la remise des clés. Je me consacre à découvrir vos souhaits, pour être au plus proche de vos attentes et des options désirées, dans une recherche sur mesure.": "Ich habe WoW Car Sourcing gegründet, um Sie beim Kauf Ihres Fahrzeugs zu begleiten, von der ersten Suche bis zur Schlüsselübergabe. Ich nehme mir Zeit, Ihre Wünsche zu erfassen, um Ihren Erwartungen und gewünschten Optionen so nah wie möglich zu kommen – in einer maßgeschneiderten Suche.",
+"Rechercher": "Suchen", "Indiquez le modèle recherché (ex. Porsche 911 GT3)": "Gesuchtes Modell angeben (z. B. Porsche 911 GT3)",
+"Tous les véhicules présentés sur ce site ne sont pas stockés par mes soins : ils sont en concession automobile. Seules les annonces vendues par une concession figurent ici. Les prix et kilométrages sont donnés à titre indicatif et doivent être reconfirmés auprès de la concession. Le malus est à calculer avant tout engagement pour les véhicules de moins de 6 000 km.": "Alle auf dieser Seite gezeigten Fahrzeuge lagern nicht bei mir: Sie stehen bei Autohäusern. Hier erscheinen nur Angebote, die von einem Autohaus verkauft werden. Preise und Kilometerstände sind unverbindlich und müssen beim Autohaus bestätigt werden. Die Malus-Steuer ist vor jeder Verpflichtung zu berechnen, bei Fahrzeugen mit weniger als 6.000 km.",
+"Une solution": "Eine schlüsselfertige", "clé en main": "Lösung", "De la recherche à la remise des clés, je gère chaque étape avec rigueur et transparence.": "Von der Suche bis zur Schlüsselübergabe begleite ich jeden Schritt mit Sorgfalt und Transparenz.",
+"Je m'occupe de tout, de la recherche jusqu'à la remise des clés.": "Ich kümmere mich um alles, von der Suche bis zur Schlüsselübergabe.",
+"Je me consacre à découvrir votre personnalité et vos options souhaitées, pour vous guider vers le véhicule qui vous correspond le plus.": "Ich nehme mir Zeit, Ihre Persönlichkeit und Ihre gewünschten Optionen kennenzulernen, um Sie zu dem Fahrzeug zu führen, das am besten zu Ihnen passt.",
+"Estimation et reprise": "Schätzung und Inzahlungnahme", "Estimation et reprise de votre ancien véhicule si vous en achetez un nouveau.": "Schätzung und Inzahlungnahme Ihres alten Fahrzeugs, wenn Sie ein neues kaufen.",
+"Financement": "Finanzierung", "Un partenariat avec une banque professionnelle du Crédit Agricole.": "Eine Partnerschaft mit einer Fachbank, dem Crédit Agricole.",
+"Démarches administratives": "Behördliche Formalitäten", "Je m'occupe de vos démarches, notamment la carte grise.": "Ich kümmere mich um Ihre Formalitäten, insbesondere die Zulassung.",
+"Livraison": "Lieferung", "Un coût selon la distance, y compris dans l'Union européenne.": "Kosten je nach Entfernung, auch innerhalb der Europäischen Union.",
+"Comment ça marche": "So funktioniert's", "En 4 étapes": "In 4", "simples": "einfachen Schritten", "Un processus clair, de votre demande jusqu'à la remise des clés.": "Ein klarer Ablauf, von Ihrer Anfrage bis zur Schlüsselübergabe.",
+"Vous décrivez votre recherche": "Sie beschreiben Ihre Suche", "Marque, modèle, budget et attentes.": "Marke, Modell, Budget und Erwartungen.",
+"Je cherche auprès des concessions": "Ich suche bei Autohäusern", "Seules les annonces vendues par des concessions sont retenues.": "Nur Angebote von Autohäusern werden berücksichtigt.",
+"Vous validez": "Sie bestätigen", "Nous convenons du véhicule et du prix, puis nous signons le mandat.": "Wir einigen uns auf Fahrzeug und Preis, dann unterschreiben wir den Auftrag.",
+"Démarches et livraison": "Formalitäten und Lieferung", "Carte grise, livraison ou remise des clés selon votre choix.": "Zulassung, Lieferung oder Schlüsselübergabe, nach Ihrer Wahl.",
+"Avis clients": "Kundenbewertungen", "Ce que disent": "Was meine", "mes clients": "Kunden sagen", "Je ne publie que des avis réels, avec l'accord de leurs auteurs.": "Ich veröffentliche nur echte Bewertungen, mit Zustimmung ihrer Verfasser.",
+"Aucun avis publié pour le moment. Vous avez travaillé avec moi ? Votre témoignage m'aide beaucoup.": "Noch keine Bewertung veröffentlicht. Haben Sie mit mir gearbeitet? Ihre Erfahrung hilft mir sehr.",
+"Laisser un avis": "Bewertung abgeben", "Nos partenaires": "Unsere Partner", "Un financement de": "Eine Finanzierung", "confiance": "mit Vertrauen",
+"Un partenariat avec une banque professionnelle pour le financement de votre véhicule.": "Eine Partnerschaft mit einer Fachbank für die Finanzierung Ihres Fahrzeugs.",
+"Trouvons votre prochain": "Finden wir Ihr nächstes", "véhicule ensemble": "Fahrzeug gemeinsam", "Contactez-moi dès aujourd'hui pour échanger sur votre recherche.": "Kontaktieren Sie mich noch heute, um über Ihre Suche zu sprechen.",
+"Parler à Votre Conseillère, Christelle": "Mit Ihrer Beraterin Christelle sprechen", "Parler à Votre Conseillère, Christelle": "Mit Ihrer Beraterin Christelle sprechen",
+"Sourcing de véhicules auprès des concessions. Accompagnement de la recherche à la remise des clés.": "Fahrzeugbeschaffung über Autohäuser. Begleitung von der Suche bis zur Schlüsselübergabe.",
+"Navigation": "Navigation", "Services": "Leistungen", "Démarches": "Formalitäten",
+"Voir →": "Ansehen →", "Photos à venir": "Fotos folgen", "← Retour aux annonces": "← Zurück zu den Angeboten", "Mon accompagnement": "Meine Begleitung",
+"Voir l'annonce chez la concession": "Angebot beim Autohaus ansehen", "Prix indicatif": "Richtpreis"
+},
+ru: {
+"Sourcing de véhicules auprès des concessions · Accompagnement de la recherche à la remise des clés": "Подбор автомобилей через автосалоны · Сопровождение от поиска до передачи ключей",
+"Disponible sur rendez-vous": "Доступна по записи",
+"Accueil": "Главная", "Véhicules": "Автомобили", "Pourquoi nous": "Почему мы", "Prestations": "Услуги", "Recherche": "Поиск", "Contact": "Контакты",
+"Voir les véhicules": "Смотреть автомобили",
+"Christelle, votre partenaire de Confiance": "Кристель, ваш надёжный партнёр",
+"Appeler": "Позвонить", "Disponible sur rendez-vous, selon mes horaires de chauffeure VTC.": "Доступна по записи, с учётом моего графика водителя VTC.",
+"Sourcing automobile · Auprès des concessions": "Подбор автомобилей · Через автосалоны",
+"Chaque voiture a son histoire.": "У каждого автомобиля своя история.", "Trouvons la vôtre.": "Найдём вашу.",
+"WoW Car Sourcing vous accompagne dans la recherche de votre véhicule, auprès des Concessions. Sélection, conseil d'achat, démarches et livraison : je m'occupe de tout.": "WoW Car Sourcing поможет вам найти автомобиль через автосалоны. Подбор, консультация при покупке, оформление и доставка — я беру всё на себя.",
+"Parler à Votre Conseillère, Christelle": "Связаться с вашим консультантом, Кристель",
+"Concession": "Автосалон", "Véhicules vendus par des concessions": "Автомобили, продаваемые автосалонами",
+"Clé en main": "Под ключ", "De la recherche à la remise des clés": "От поиска до передачи ключей",
+"Conseil d'achat": "Консультация при покупке", "Un véhicule choisi selon vos besoins et vos options": "Автомобиль, подобранный под ваши потребности и опции",
+"Livraison UE": "Доставка по ЕС", "Selon la distance, sur devis": "По расстоянию, по запросу",
+"Ma sélection": "Моя подборка", "coup de cœur": "фавориты", "Sélection exclusive du véhicule disponible immédiatement.": "Эксклюзивная подборка, доступна немедленно.",
+"Coup de cœur": "Фаворит", "Voir la fiche": "Подробнее", "Prix sur demande": "Цена по запросу",
+"Essence": "Бензин", "Automatique": "Автомат", "Réserver ce véhicule": "Забронировать автомобиль", "Parler à Votre Conseillère, Christelle": "Связаться с вашим консультантом, Кристель", "Parler à Votre Conseillère, Christelle": "Связаться с вашим консультантом, Кристель",
+"← Retour à la sélection": "← Назад к подборке", "Porsche · Occasion · Disponible": "Porsche · С пробегом · В наличии",
+"Prix": "Цена", "Je vous communique le prix et les conditions de livraison sur simple demande.": "Цену и условия доставки сообщу по вашему запросу.",
+"Caractéristiques": "Характеристики", "Marque": "Марка", "Modèle": "Модель", "Carrosserie": "Кузов", "Coupé": "Купе", "Carburant": "Топливо", "Boîte": "Коробка передач", "Automatique (PDK)": "Автомат (PDK)", "Couleur": "Цвет", "Noir": "Чёрный",
+"Description": "Описание",
+"Une Porsche 718 Cayman GTS noire, coupé sportif à boîte automatique PDK. Véhicule vendu par une concession et sélectionné par WoW Car Sourcing selon votre profil.": "Чёрный Porsche 718 Cayman GTS, спортивное купе с роботизированной коробкой PDK. Автомобиль продан автосалоном и подобран WoW Car Sourcing под ваш профиль.",
+"Je vous accompagne de la réservation à la remise des clés : démarches, carte grise et livraison selon votre choix.": "Я сопровождаю вас от бронирования до передачи ключей: оформление, свидетельство о регистрации и доставка на ваш выбор.",
+"Votre recherche par marque": "Поиск по марке", "Votre": "Ваша", "marque": "марка", "Cliquez sur une marque pour voir sa page dédiée.": "Нажмите на марку, чтобы открыть её страницу.",
+"Voir tous les véhicules": "Все автомобили",
+"Pourquoi WoW Car Sourcing ?": "Почему WoW Car Sourcing?",
+"J'ai créé WoW Car Sourcing pour vous accompagner dans l'achat de votre véhicule, de la première recherche à la remise des clés. Je me consacre à découvrir vos souhaits, pour être au plus proche de vos attentes et des options désirées, dans une recherche sur mesure.": "Я создала WoW Car Sourcing, чтобы сопровождать вас при покупке автомобиля — от первого поиска до передачи ключей. Я внимательно изучаю ваши пожелания, чтобы максимально точно соответствовать вашим ожиданиям и нужным опциям — в индивидуальном подборе.",
+"Rechercher": "Искать", "Indiquez le modèle recherché (ex. Porsche 911 GT3)": "Укажите искомую модель (напр. Porsche 911 GT3)",
+"Tous les véhicules présentés sur ce site ne sont pas stockés par mes soins : ils sont en concession automobile. Seules les annonces vendues par une concession figurent ici. Les prix et kilométrages sont donnés à titre indicatif et doivent être reconfirmés auprès de la concession. Le malus est à calculer avant tout engagement pour les véhicules de moins de 6 000 km.": "Все автомобили на этом сайте хранятся не у меня: они находятся в автосалонах. Здесь размещены только объявления о продаже через автосалон. Цены и пробег указаны ориентировочно и должны быть уточнены в автосалоне. Налог малус рассчитывается до любого обязательства для автомобилей с пробегом менее 6 000 км.",
+"Une solution": "Комплексное решение", "clé en main": "под ключ", "De la recherche à la remise des clés, je gère chaque étape avec rigueur et transparence.": "От поиска до передачи ключей я веду каждый этап с тщательностью и прозрачностью.",
+"Je m'occupe de tout, de la recherche jusqu'à la remise des clés.": "Я займусь всем — от поиска до передачи ключей.",
+"Je me consacre à découvrir votre personnalité et vos options souhaitées, pour vous guider vers le véhicule qui vous correspond le plus.": "Я уделяю внимание вашей личности и нужным опциям, чтобы подобрать автомобиль, который подходит вам лучше всего.",
+"Estimation et reprise": "Оценка и трейд-ин", "Estimation et reprise de votre ancien véhicule si vous en achetez un nouveau.": "Оценка и трейд-ин вашего текущего автомобиля, если вы покупаете новый.",
+"Financement": "Финансирование", "Un partenariat avec une banque professionnelle du Crédit Agricole.": "Партнёрство с профессиональным банком Crédit Agricole.",
+"Démarches administratives": "Административные процедуры", "Je m'occupe de vos démarches, notamment la carte grise.": "Я займусь вашими документами, в том числе свидетельством о регистрации.",
+"Livraison": "Доставка", "Un coût selon la distance, y compris dans l'Union européenne.": "Стоимость зависит от расстояния, в том числе по всему ЕС.",
+"Comment ça marche": "Как это работает", "En 4 étapes": "За 4", "simples": "простых шага", "Un processus clair, de votre demande jusqu'à la remise des clés.": "Понятный процесс — от вашего запроса до передачи ключей.",
+"Vous décrivez votre recherche": "Вы описываете поиск", "Marque, modèle, budget et attentes.": "Марка, модель, бюджет и ожидания.",
+"Je cherche auprès des concessions": "Я ищу в автосалонах", "Seules les annonces vendues par des concessions sont retenues.": "Отбираются только объявления автосалонов.",
+"Vous validez": "Вы подтверждаете", "Nous convenons du véhicule et du prix, puis nous signons le mandat.": "Мы согласовываем автомобиль и цену, затем подписываем мандат.",
+"Démarches et livraison": "Оформление и доставка", "Carte grise, livraison ou remise des clés selon votre choix.": "Свидетельство о регистрации, доставка или передача ключей — на ваш выбор.",
+"Avis clients": "Отзывы клиентов", "Ce que disent": "Что говорят", "mes clients": "мои клиенты", "Je ne publie que des avis réels, avec l'accord de leurs auteurs.": "Я публикую только настоящие отзывы — с согласия их авторов.",
+"Aucun avis publié pour le moment. Vous avez travaillé avec moi ? Votre témoignage m'aide beaucoup.": "Отзывов пока нет. Работали со мной? Ваш отзыв очень мне поможет.",
+"Laisser un avis": "Оставить отзыв", "Nos partenaires": "Наши партнёры", "Un financement de": "Финансирование", "confiance": "с доверием",
+"Un partenariat avec une banque professionnelle pour le financement de votre véhicule.": "Партнёрство с профессиональным банком для финансирования вашего автомобиля.",
+"Trouvons votre prochain": "Найдём ваш следующий", "véhicule ensemble": "автомобиль вместе", "Contactez-moi dès aujourd'hui pour échanger sur votre recherche.": "Свяжитесь со мной сегодня, чтобы обсудить ваш поиск.",
+"Parler à Votre Conseillère, Christelle": "Связаться с вашим консультантом, Кристель", "Parler à Votre Conseillère, Christelle": "Связаться с вашим консультантом, Кристель",
+"Sourcing de véhicules auprès des concessions. Accompagnement de la recherche à la remise des clés.": "Подбор автомобилей через автосалоны. Сопровождение от поиска до передачи ключей.",
+"Navigation": "Навигация", "Services": "Услуги", "Démarches": "Оформление",
+"Voir →": "Смотреть →", "Photos à venir": "Фото скоро", "← Retour aux annonces": "← Назад к объявлениям", "Mon accompagnement": "Моё сопровождение",
+"Voir l'annonce chez la concession": "Смотреть объявление в автосалоне", "Prix indicatif": "Ориентировочная цена"
+},
+uk: {
+"Sourcing de véhicules auprès des concessions · Accompagnement de la recherche à la remise des clés": "Підбір автомобілів через автосалони · Супровід від пошуку до передачі ключів",
+"Disponible sur rendez-vous": "Доступна за домовленістю",
+"Accueil": "Головна", "Véhicules": "Автомобілі", "Pourquoi nous": "Чому ми", "Prestations": "Послуги", "Recherche": "Пошук", "Contact": "Контакти",
+"Voir les véhicules": "Переглянути автомобілі",
+"Christelle, votre partenaire de Confiance": "Крістель, ваш надійний партнер",
+"Appeler": "Подзвонити", "Disponible sur rendez-vous, selon mes horaires de chauffeure VTC.": "Доступна за домовленістю, з урахуванням мого графіка водія VTC.",
+"Sourcing automobile · Auprès des concessions": "Підбір автомобілів · Через автосалони",
+"Chaque voiture a son histoire.": "У кожного автомобіля своя історія.", "Trouvons la vôtre.": "Знайдемо вашу.",
+"WoW Car Sourcing vous accompagne dans la recherche de votre véhicule, auprès des Concessions. Sélection, conseil d'achat, démarches et livraison : je m'occupe de tout.": "WoW Car Sourcing супроводжує вас у пошуку автомобіля через автосалони. Підбір, консультація щодо купівлі, оформлення та доставка — я займаюся всім.",
+"Parler à Votre Conseillère, Christelle": "Зв'язатися з вашою консультанткою, Крістель",
+"Concession": "Автосалон", "Véhicules vendus par des concessions": "Автомобілі, які продають автосалони",
+"Clé en main": "Під ключ", "De la recherche à la remise des clés": "Від пошуку до передачі ключів",
+"Conseil d'achat": "Консультація щодо купівлі", "Un véhicule choisi selon vos besoins et vos options": "Автомобіль, підібраний під ваші потреби й опції",
+"Livraison UE": "Доставка по ЄС", "Selon la distance, sur devis": "Залежно від відстані, за запитом",
+"Ma sélection": "Моя добірка", "coup de cœur": "фаворити", "Sélection exclusive du véhicule disponible immédiatement.": "Ексклюзивна добірка, доступна негайно.",
+"Coup de cœur": "Фаворит", "Voir la fiche": "Детальніше", "Prix sur demande": "Ціна за запитом",
+"Essence": "Бензин", "Automatique": "Автомат", "Réserver ce véhicule": "Забронювати автомобіль", "Parler à Votre Conseillère, Christelle": "Зв'язатися з вашою консультанткою, Крістель", "Parler à Votre Conseillère, Christelle": "Зв'язатися з вашою консультанткою, Крістель",
+"← Retour à la sélection": "← Назад до добірки", "Porsche · Occasion · Disponible": "Porsche · Б/у · В наявності",
+"Prix": "Ціна", "Je vous communique le prix et les conditions de livraison sur simple demande.": "Ціну та умови доставки надішлю на ваш запит.",
+"Caractéristiques": "Характеристики", "Marque": "Марка", "Modèle": "Модель", "Carrosserie": "Кузов", "Coupé": "Купе", "Carburant": "Паливо", "Boîte": "Коробка передач", "Automatique (PDK)": "Автомат (PDK)", "Couleur": "Колір", "Noir": "Чорний",
+"Description": "Опис",
+"Une Porsche 718 Cayman GTS noire, coupé sportif à boîte automatique PDK. Véhicule vendu par une concession et sélectionné par WoW Car Sourcing selon votre profil.": "Чорний Porsche 718 Cayman GTS, спортивне купе з коробкою PDK. Автомобіль продано автосалоном і підібрано WoW Car Sourcing під ваш профіль.",
+"Je vous accompagne de la réservation à la remise des clés : démarches, carte grise et livraison selon votre choix.": "Супроводжую вас від бронювання до передачі ключів: оформлення, реєстраційний документ і доставка на ваш вибір.",
+"Votre recherche par marque": "Пошук за маркою", "Votre": "Ваша", "marque": "марка", "Cliquez sur une marque pour voir sa page dédiée.": "Натисніть на марку, щоб відкрити її сторінку.",
+"Voir tous les véhicules": "Усі автомобілі",
+"Pourquoi WoW Car Sourcing ?": "Чому WoW Car Sourcing?",
+"J'ai créé WoW Car Sourcing pour vous accompagner dans l'achat de votre véhicule, de la première recherche à la remise des clés. Je me consacre à découvrir vos souhaits, pour être au plus proche de vos attentes et des options désirées, dans une recherche sur mesure.": "Я створила WoW Car Sourcing, щоб супроводжувати вас під час купівлі автомобіля — від першого пошуку до передачі ключів. Я уважно вивчаю ваші побажання, щоб максимально точно відповідати вашим очікуванням і потрібним опціям — в індивідуальному підборі.",
+"Rechercher": "Шукати", "Indiquez le modèle recherché (ex. Porsche 911 GT3)": "Вкажіть шукану модель (напр. Porsche 911 GT3)",
+"Tous les véhicules présentés sur ce site ne sont pas stockés par mes soins : ils sont en concession automobile. Seules les annonces vendues par une concession figurent ici. Les prix et kilométrages sont donnés à titre indicatif et doivent être reconfirmés auprès de la concession. Le malus est à calculer avant tout engagement pour les véhicules de moins de 6 000 km.": "Усі автомобілі на цьому сайті зберігаються не у мене: вони знаходяться в автосалонах. Тут розміщено лише оголошення про продаж через автосалон. Ціни та пробіг вказані орієнтовно й мають бути уточнені в автосалоні. Податок малус розраховується до будь-яких зобов'язань для автомобілів з пробігом менше 6 000 км.",
+"Une solution": "Комплексне рішення", "clé en main": "під ключ", "De la recherche à la remise des clés, je gère chaque étape avec rigueur et transparence.": "Від пошуку до передачі ключів я веду кожен етап із ретельністю та прозорістю.",
+"Je m'occupe de tout, de la recherche jusqu'à la remise des clés.": "Я займуся всім — від пошуку до передачі ключів.",
+"Je me consacre à découvrir votre personnalité et vos options souhaitées, pour vous guider vers le véhicule qui vous correspond le plus.": "Я приділяю увагу вашій особистості та потрібним опціям, щоб підібрати автомобіль, який вам найбільше підходить.",
+"Estimation et reprise": "Оцінка та трейд-ін", "Estimation et reprise de votre ancien véhicule si vous en achetez un nouveau.": "Оцінка та трейд-ін вашого поточного автомобіля, якщо ви купуєте новий.",
+"Financement": "Фінансування", "Un partenariat avec une banque professionnelle du Crédit Agricole.": "Партнерство з професійним банком Crédit Agricole.",
+"Démarches administratives": "Адміністративні процедури", "Je m'occupe de vos démarches, notamment la carte grise.": "Я займуся вашими документами, зокрема реєстраційним документом.",
+"Livraison": "Доставка", "Un coût selon la distance, y compris dans l'Union européenne.": "Вартість залежить від відстані, зокрема по всьому ЄС.",
+"Comment ça marche": "Як це працює", "En 4 étapes": "За 4", "simples": "простих кроки", "Un processus clair, de votre demande jusqu'à la remise des clés.": "Зрозумілий процес — від вашого запиту до передачі ключів.",
+"Vous décrivez votre recherche": "Ви описуєте пошук", "Marque, modèle, budget et attentes.": "Марка, модель, бюджет і очікування.",
+"Je cherche auprès des concessions": "Я шукаю в автосалонах", "Seules les annonces vendues par des concessions sont retenues.": "Відбираються лише оголошення автосалонів.",
+"Vous validez": "Ви підтверджуєте", "Nous convenons du véhicule et du prix, puis nous signons le mandat.": "Ми погоджуємо автомобіль і ціну, потім підписуємо мандат.",
+"Démarches et livraison": "Оформлення та доставка", "Carte grise, livraison ou remise des clés selon votre choix.": "Реєстраційний документ, доставка або передача ключів — на ваш вибір.",
+"Avis clients": "Відгуки клієнтів", "Ce que disent": "Що кажуть", "mes clients": "мої клієнти", "Je ne publie que des avis réels, avec l'accord de leurs auteurs.": "Я публікую лише справжні відгуки — за згодою їх авторів.",
+"Aucun avis publié pour le moment. Vous avez travaillé avec moi ? Votre témoignage m'aide beaucoup.": "Відгуків поки немає. Ви працювали зі мною? Ваш відгук дуже мені допоможе.",
+"Laisser un avis": "Залишити відгук", "Nos partenaires": "Наші партнери", "Un financement de": "Фінансування", "confiance": "з довірою",
+"Un partenariat avec une banque professionnelle pour le financement de votre véhicule.": "Партнерство з професійним банком для фінансування вашого автомобіля.",
+"Trouvons votre prochain": "Знайдемо ваш наступний", "véhicule ensemble": "автомобіль разом", "Contactez-moi dès aujourd'hui pour échanger sur votre recherche.": "Зв'яжіться зі мною сьогодні, щоб обговорити ваш пошук.",
+"Parler à Votre Conseillère, Christelle": "Зв'язатися з вашою консультанткою, Крістель", "Parler à Votre Conseillère, Christelle": "Зв'язатися з вашою консультанткою, Крістель",
+"Sourcing de véhicules auprès des concessions. Accompagnement de la recherche à la remise des clés.": "Підбір автомобілів через автосалони. Супровід від пошуку до передачі ключів.",
+"Navigation": "Навігація", "Services": "Послуги", "Démarches": "Оформлення",
+"Voir →": "Дивитися →", "Photos à venir": "Фото незабаром", "← Retour aux annonces": "← Назад до оголошень", "Mon accompagnement": "Мій супровід",
+"Voir l'annonce chez la concession": "Дивитися оголошення в автосалоні", "Prix indicatif": "Орієнтовна ціна"
+},
+it: {
+"Sourcing de véhicules auprès des concessions · Accompagnement de la recherche à la remise des clés": "Sourcing di veicoli presso le concessionarie · Accompagnamento dalla ricerca alla consegna delle chiavi",
+"Disponible sur rendez-vous": "Disponibile su appuntamento",
+"Accueil": "Home", "Véhicules": "Veicoli", "Pourquoi nous": "Perché noi", "Prestations": "Servizi", "Recherche": "Ricerca", "Contact": "Contatti",
+"Voir les véhicules": "Vedi i veicoli",
+"Christelle, votre partenaire de Confiance": "Christelle, il vostro partner di fiducia",
+"Appeler": "Chiama", "Disponible sur rendez-vous, selon mes horaires de chauffeure VTC.": "Disponibile su appuntamento, in base ai miei orari di autista VTC.",
+"Sourcing automobile · Auprès des concessions": "Sourcing automobilistico · Presso le concessionarie",
+"Chaque voiture a son histoire.": "Ogni auto ha la sua storia.", "Trouvons la vôtre.": "Troviamo la vostra.",
+"WoW Car Sourcing vous accompagne dans la recherche de votre véhicule, auprès des Concessions. Sélection, conseil d'achat, démarches et livraison : je m'occupe de tout.": "WoW Car Sourcing vi accompagna nella ricerca del vostro veicolo presso le concessionarie. Selezione, consulenza all'acquisto, pratiche e consegna: mi occupo di tutto.",
+"Parler à Votre Conseillère, Christelle": "Parla con la vostra consulente, Christelle",
+"Concession": "Concessionaria", "Véhicules vendus par des concessions": "Veicoli venduti dalle concessionarie",
+"Clé en main": "Chiavi in mano", "De la recherche à la remise des clés": "Dalla ricerca alla consegna delle chiavi",
+"Conseil d'achat": "Consulenza all'acquisto", "Un véhicule choisi selon vos besoins et vos options": "Un veicolo scelto in base alle vostre esigenze e alle vostre opzioni",
+"Livraison UE": "Consegna UE", "Selon la distance, sur devis": "In base alla distanza, su preventivo",
+"Ma sélection": "La mia selezione", "coup de cœur": "del cuore", "Sélection exclusive du véhicule disponible immédiatement.": "Selezione esclusiva, disponibile subito.",
+"Coup de cœur": "Del cuore", "Voir la fiche": "Vedi scheda", "Prix sur demande": "Prezzo su richiesta",
+"Essence": "Benzina", "Automatique": "Automatico", "Réserver ce véhicule": "Prenota questo veicolo", "Parler à Votre Conseillère, Christelle": "Parla con la vostra consulente, Christelle", "Parler à Votre Conseillère, Christelle": "Parla con la vostra consulente, Christelle",
+"← Retour à la sélection": "← Torna alla selezione", "Porsche · Occasion · Disponible": "Porsche · Usata · Disponibile",
+"Prix": "Prezzo", "Je vous communique le prix et les conditions de livraison sur simple demande.": "Vi comunico prezzo e condizioni di consegna su semplice richiesta.",
+"Caractéristiques": "Caratteristiche", "Marque": "Marca", "Modèle": "Modello", "Carrosserie": "Carrozzeria", "Coupé": "Coupé", "Carburant": "Alimentazione", "Boîte": "Cambio", "Automatique (PDK)": "Automatico (PDK)", "Couleur": "Colore", "Noir": "Nero",
+"Description": "Descrizione",
+"Une Porsche 718 Cayman GTS noire, coupé sportif à boîte automatique PDK. Véhicule vendu par une concession et sélectionné par WoW Car Sourcing selon votre profil.": "Una Porsche 718 Cayman GTS nera, coupé sportiva con cambio automatico PDK. Veicolo venduto da una concessionaria e selezionato da WoW Car Sourcing secondo il vostro profilo.",
+"Je vous accompagne de la réservation à la remise des clés : démarches, carte grise et livraison selon votre choix.": "Vi accompagno dalla prenotazione alla consegna delle chiavi: pratiche, carta grigia e consegna a vostra scelta.",
+"Votre recherche par marque": "Ricerca per marca", "Votre": "La vostra", "marque": "marca", "Cliquez sur une marque pour voir sa page dédiée.": "Clicca su una marca per vedere la sua pagina dedicata.",
+"Voir tous les véhicules": "Vedi tutti i veicoli",
+"Pourquoi WoW Car Sourcing ?": "Perché WoW Car Sourcing?",
+"J'ai créé WoW Car Sourcing pour vous accompagner dans l'achat de votre véhicule, de la première recherche à la remise des clés. Je me consacre à découvrir vos souhaits, pour être au plus proche de vos attentes et des options désirées, dans une recherche sur mesure.": "Ho creato WoW Car Sourcing per accompagnarvi nell'acquisto del vostro veicolo, dalla prima ricerca alla consegna delle chiavi. Mi dedico a scoprire i vostri desideri, per restare il più vicino possibile alle vostre attese e alle opzioni che desiderate, in una ricerca su misura.",
+"Rechercher": "Cerca", "Indiquez le modèle recherché (ex. Porsche 911 GT3)": "Indicate il modello cercato (es. Porsche 911 GT3)",
+"Tous les véhicules présentés sur ce site ne sont pas stockés par mes soins : ils sont en concession automobile. Seules les annonces vendues par une concession figurent ici. Les prix et kilométrages sont donnés à titre indicatif et doivent être reconfirmés auprès de la concession. Le malus est à calculer avant tout engagement pour les véhicules de moins de 6 000 km.": "Tutti i veicoli presentati su questo sito non sono stoccati da me: si trovano presso le concessionarie. Qui compaiono solo gli annunci venduti da una concessionaria. Prezzi e chilometraggi sono indicativi e vanno riconfermati con la concessionaria. Il malus va calcolato prima di qualsiasi impegno per i veicoli con meno di 6.000 km.",
+"Une solution": "Una soluzione", "clé en main": "chiavi in mano", "De la recherche à la remise des clés, je gère chaque étape avec rigueur et transparence.": "Dalla ricerca alla consegna delle chiavi, seguo ogni tappa con rigore e trasparenza.",
+"Je m'occupe de tout, de la recherche jusqu'à la remise des clés.": "Mi occupo di tutto, dalla ricerca alla consegna delle chiavi.",
+"Je me consacre à découvrir votre personnalité et vos options souhaitées, pour vous guider vers le véhicule qui vous correspond le plus.": "Mi dedico a scoprire la vostra personalità e le opzioni che desiderate, per guidarvi verso il veicolo che vi corrisponde di più.",
+"Estimation et reprise": "Stima e permuta", "Estimation et reprise de votre ancien véhicule si vous en achetez un nouveau.": "Stima e permuta del vostro veicolo attuale se ne acquistate uno nuovo.",
+"Financement": "Finanziamento", "Un partenariat avec une banque professionnelle du Crédit Agricole.": "Una partnership con una banca professionale, il Crédit Agricole.",
+"Démarches administratives": "Pratiche amministrative", "Je m'occupe de vos démarches, notamment la carte grise.": "Mi occupo delle vostre pratiche, in particolare della carta grigia.",
+"Livraison": "Consegna", "Un coût selon la distance, y compris dans l'Union européenne.": "Un costo in base alla distanza, anche all'interno dell'Unione europea.",
+"Comment ça marche": "Come funziona", "En 4 étapes": "In 4", "simples": "semplici passaggi", "Un processus clair, de votre demande jusqu'à la remise des clés.": "Un processo chiaro, dalla vostra richiesta alla consegna delle chiavi.",
+"Vous décrivez votre recherche": "Descrivete la vostra ricerca", "Marque, modèle, budget et attentes.": "Marca, modello, budget e aspettative.",
+"Je cherche auprès des concessions": "Cerco presso le concessionarie", "Seules les annonces vendues par des concessions sont retenues.": "Si selezionano solo gli annunci venduti dalle concessionarie.",
+"Vous validez": "Approvate", "Nous convenons du véhicule et du prix, puis nous signons le mandat.": "Concordiamo veicolo e prezzo, poi firmiamo il mandato.",
+"Démarches et livraison": "Pratiche e consegna", "Carte grise, livraison ou remise des clés selon votre choix.": "Carta grigia, consegna o consegna delle chiavi, a vostra scelta.",
+"Avis clients": "Recensioni clienti", "Ce que disent": "Cosa dicono", "mes clients": "i miei clienti", "Je ne publie que des avis réels, avec l'accord de leurs auteurs.": "Pubblico solo recensioni reali, con l'accordo dei loro autori.",
+"Aucun avis publié pour le moment. Vous avez travaillé avec moi ? Votre témoignage m'aide beaucoup.": "Nessuna recensione pubblicata per ora. Avete lavorato con me? La vostra testimonianza mi aiuta molto.",
+"Laisser un avis": "Lascia una recensione", "Nos partenaires": "I nostri partner", "Un financement de": "Un finanziamento", "confiance": "di fiducia",
+"Un partenariat avec une banque professionnelle pour le financement de votre véhicule.": "Una partnership con una banca professionale per il finanziamento del vostro veicolo.",
+"Trouvons votre prochain": "Troviamo il vostro prossimo", "véhicule ensemble": "veicolo insieme", "Contactez-moi dès aujourd'hui pour échanger sur votre recherche.": "Contattatemi oggi stesso per parlare della vostra ricerca.",
+"Parler à Votre Conseillère, Christelle": "Parla con la vostra consulente, Christelle", "Parler à Votre Conseillère, Christelle": "Parla con la vostra consulente, Christelle",
+"Sourcing de véhicules auprès des concessions. Accompagnement de la recherche à la remise des clés.": "Sourcing di veicoli presso le concessionarie. Accompagnamento dalla ricerca alla consegna delle chiavi.",
+"Navigation": "Navigazione", "Services": "Servizi", "Démarches": "Pratiche",
+"Voir →": "Vedi →", "Photos à venir": "Foto in arrivo", "← Retour aux annonces": "← Torna agli annunci", "Mon accompagnement": "Il mio accompagnamento",
+"Voir l'annonce chez la concession": "Vedi l'annuncio presso la concessionaria", "Prix indicatif": "Prezzo indicativo"
+}
+};
+</script>
+<script>
+(function () {
+  const LANGUES = ["fr", "en", "de", "ru", "uk", "it"];
+  let langue = "fr";
+
+  function traduireTout(dico) {
+    const marcheur = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+    const noeuds = [];
+    while (marcheur.nextNode()) noeuds.push(marcheur.currentNode);
+    noeuds.forEach(function (n) {
+      if (!n.parentNode || /^(SCRIPT|STYLE)$/.test(n.parentNode.nodeName)) return;
+      if (n._fr === undefined) n._fr = n.nodeValue;
+      const brut = n._fr;
+      const cle = brut.trim();
+      if (!cle) return;
+      const trad = dico && dico[cle];
+      if (trad) {
+        const debut = brut.indexOf(cle);
+        n.nodeValue = brut.slice(0, debut) + trad + brut.slice(debut + cle.length);
+      } else {
+        n.nodeValue = brut;
+      }
+    });
+    document.querySelectorAll("[placeholder]").forEach(function (el) {
+      if (el.dataset.fr === undefined) el.dataset.fr = el.placeholder;
+      el.placeholder = (dico && dico[el.dataset.fr]) || el.dataset.fr;
+    });
+  }
+
+  function appliquer(l) {
+    langue = l;
+    document.documentElement.lang = l;
+    try { localStorage.setItem("wow-langue", l); } catch (e) {}
+    traduireTout(l === "fr" ? null : TRAD[l]);
+    document.querySelectorAll("#langues button").forEach(function (b) {
+      b.classList.toggle("actif", b.dataset.lang === l);
+    });
+  }
+
+  document.getElementById("langues").addEventListener("click", function (e) {
+    const b = e.target.closest("button[data-lang]");
+    if (b) appliquer(b.dataset.lang);
+  });
+
+  let memoire = "fr";
+  try { memoire = localStorage.getItem("wow-langue") || "fr"; } catch (e) {}
+  appliquer(LANGUES.indexOf(memoire) >= 0 ? memoire : "fr");
+
+  // Les fiches et cartes affichées par le site après chargement sont aussi traduites
+  new MutationObserver(function () {
+    if (langue !== "fr") traduireTout(TRAD[langue]);
+  }).observe(document.body, { childList: true, subtree: true });
+})();
 </script>
 </body>
 </html>
